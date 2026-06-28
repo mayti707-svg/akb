@@ -55,19 +55,16 @@ body {
     padding: 45px;
     text-align: center;
 
-    /* Снизили альфа-канал с 0.11 до 0.05 для большей прозрачности */
-    background: rgba(255, 255, 255, 0.05); 
-    
-    /* Уменьшили размытие с 18px до 6px, чтобы частицы оставались чёткими */
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.11);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 22px;
 
     box-shadow:
-        0 0 70px rgba(37, 99, 235, 0.2),
-        0 25px 60px rgba(0, 0, 0, 0.45);
+        0 0 70px rgba(37, 99, 235, 0.28),
+        0 25px 60px rgba(0, 0, 0, 0.55);
 
     animation: fade 1s ease;
 }
@@ -162,14 +159,29 @@ footer {
 }
 </style>
 </head>
+
 <body>
+
 <canvas id="digital-bg"></canvas>
+
 <div class="card">
+
     <h1>🏆 Алтыншебер</h1>
+
+    <h2 id="title">Байқау аяқталды</h2>
+
+    <p id="text">
+        Құрметті әріптестер!!<br><br>
+        <b>«Алтыншебер»</b> байқауы аяқталды.<br>
+        Барлық қатысушыларға белсенділігі, қызығушылығы және кәсібилігі үшін алғысымызды білдіреміз!
+    </p>
+
     <footer>
-        
+       
     </footer>
+
 </div>
+
 <script>
 /*
     Цифровой фон без библиотек.
@@ -178,11 +190,13 @@ footer {
 
 const canvas = document.getElementById("digital-bg");
 const ctx = canvas.getContext("2d");
+
 let particles = [];
 let mouse = {
     x: null,
     y: null
 };
+
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -260,12 +274,14 @@ function drawParticles() {
 
     requestAnimationFrame(drawParticles);
 }
+
 window.addEventListener("resize", resizeCanvas);
 
 window.addEventListener("mousemove", function(event) {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
 });
+
 window.addEventListener("touchmove", function(event) {
     if (event.touches.length > 0) {
         mouse.x = event.touches[0].clientX;
@@ -276,6 +292,7 @@ window.addEventListener("touchmove", function(event) {
 resizeCanvas();
 drawParticles();
 </script>
+
 <script>
 function kk() {
     document.documentElement.lang = "kk";
