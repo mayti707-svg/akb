@@ -462,9 +462,202 @@
             .intro { display: none; }
             .app, .card { opacity: 1; transform: none; }
         }
+
+        /* ===== ГРАФИЧЕСКИЙ КЛЮЧ ДОСТУПА ===== */
+        body.locked {
+            overflow: hidden;
+        }
+
+        body.locked .app,
+        body.locked .lang-switcher,
+        body.locked .intro,
+        body.locked .gold-ingot {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+
+        .pattern-lock-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background:
+                radial-gradient(circle at 50% 18%, rgba(212, 175, 55, 0.18), transparent 34%),
+                radial-gradient(circle at 50% 90%, rgba(160, 95, 20, 0.14), transparent 38%),
+                linear-gradient(135deg, #07090d 0%, #10151d 48%, #07090d 100%);
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+
+        .pattern-lock-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .pattern-lock-card {
+            width: min(100%, 430px);
+            padding: 30px 24px 28px;
+            border: 1px solid rgba(212, 175, 55, 0.22);
+            border-radius: 28px;
+            background: linear-gradient(145deg, rgba(18, 24, 34, 0.96), rgba(8, 12, 18, 0.98));
+            box-shadow:
+                0 28px 80px rgba(0, 0, 0, 0.54),
+                inset 0 0 0 1px rgba(212, 175, 55, 0.05);
+            text-align: center;
+        }
+
+        .pattern-lock-logo {
+            width: 86px;
+            height: auto;
+            margin-bottom: 18px;
+            filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.28));
+        }
+
+        .pattern-lock-title {
+            margin-bottom: 8px;
+            color: var(--gold-light);
+            font-size: 1.28rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .pattern-lock-subtitle {
+            margin-bottom: 22px;
+            color: rgba(255, 255, 255, 0.56);
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.45;
+        }
+
+        .pattern-area {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            max-width: 76vw;
+            max-height: 76vw;
+            margin: 0 auto 18px;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .pattern-lines {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            pointer-events: none;
+        }
+
+        .pattern-line {
+            stroke: var(--gold);
+            stroke-width: 7;
+            stroke-linecap: round;
+            opacity: 0.86;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
+        }
+
+        .pattern-line.preview {
+            opacity: 0.5;
+        }
+
+        .pattern-dot {
+            position: absolute;
+            width: 62px;
+            height: 62px;
+            margin: -31px 0 0 -31px;
+            border: 2px solid rgba(212, 175, 55, 0.34);
+            border-radius: 50%;
+            background:
+                radial-gradient(circle, rgba(247, 223, 138, 0.22) 0 18%, rgba(212, 175, 55, 0.08) 19% 44%, rgba(255, 255, 255, 0.025) 45% 100%);
+            box-shadow: inset 0 0 18px rgba(212, 175, 55, 0.08);
+            transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+        }
+
+        .pattern-dot.active {
+            transform: scale(1.08);
+            border-color: rgba(247, 223, 138, 0.95);
+            background:
+                radial-gradient(circle, var(--gold-light) 0 18%, rgba(212, 175, 55, 0.44) 19% 48%, rgba(212, 175, 55, 0.12) 49% 100%);
+            box-shadow:
+                0 0 22px rgba(212, 175, 55, 0.34),
+                inset 0 0 18px rgba(247, 223, 138, 0.16);
+        }
+
+        .pattern-message {
+            min-height: 22px;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+
+        .pattern-message.error {
+            color: #ff8b8b;
+        }
+
+        .pattern-lock-card.shake {
+            animation: patternShake 0.35s ease;
+        }
+
+        @keyframes patternShake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-9px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-6px); }
+            80% { transform: translateX(5px); }
+        }
+
+        @media (max-width: 420px) {
+            .pattern-lock-card {
+                padding: 26px 18px 24px;
+                border-radius: 22px;
+            }
+
+            .pattern-area {
+                width: 270px;
+                height: 270px;
+            }
+
+            .pattern-dot {
+                width: 56px;
+                height: 56px;
+                margin: -28px 0 0 -28px;
+            }
+        }
+
     </style>
 </head>
 <body>
+
+    <!-- Экран графического ключа. До правильного ввода основной index.html полностью скрыт. -->
+    <div class="pattern-lock-screen" id="patternLockScreen">
+        <div class="pattern-lock-card" id="patternLockCard">
+            <img src="altyn.png" alt="Алтыналмас" class="pattern-lock-logo" />
+            <div class="pattern-lock-title">Введите графический ключ</div>
+            <div class="pattern-lock-subtitle">Нарисуйте правильный ключ, чтобы открыть страницу</div>
+
+            <div class="pattern-area" id="patternArea" aria-label="Графический ключ">
+                <svg class="pattern-lines" id="patternLines"></svg>
+                <div class="pattern-dot" data-dot="1"></div>
+                <div class="pattern-dot" data-dot="2"></div>
+                <div class="pattern-dot" data-dot="3"></div>
+                <div class="pattern-dot" data-dot="4"></div>
+                <div class="pattern-dot" data-dot="5"></div>
+                <div class="pattern-dot" data-dot="6"></div>
+                <div class="pattern-dot" data-dot="7"></div>
+                <div class="pattern-dot" data-dot="8"></div>
+                <div class="pattern-dot" data-dot="9"></div>
+            </div>
+
+            <div class="pattern-message" id="patternMessage">Проведите пальцем по точкам</div>
+        </div>
+    </div>
+
     <div class="intro" id="intro">
         <img src="altyn.png" alt="Алтыналмас" class="intro-logo" />
         <div class="intro-title">Алтын Шебер 2026</div>
@@ -576,6 +769,239 @@
             <span>✦</span> <span id="footerText">Металды жасайтын әркімге құрметпен</span> <span>✦</span>
         </footer>
     </main>
+
+
+    <script>
+        (function () {
+            /**
+             * Графический ключ для открытия страницы.
+             *
+             * Сейчас правильный ключ задан как буква "М":
+             * 7 → 4 → 1 → 5 → 3 → 6 → 9
+             *
+             * Схема точек:
+             * 1 2 3
+             * 4 5 6
+             * 7 8 9
+             *
+             * Если нужен другой ключ — поменяйте значение ACCESS_PATTERN.
+             */
+            const ACCESS_PATTERN = '7415369';
+
+            const body = document.body;
+            const screen = document.getElementById('patternLockScreen');
+            const card = document.getElementById('patternLockCard');
+            const area = document.getElementById('patternArea');
+            const svg = document.getElementById('patternLines');
+            const message = document.getElementById('patternMessage');
+            const dots = Array.from(area.querySelectorAll('.pattern-dot'));
+
+            let isDrawing = false;
+            let selectedDots = [];
+            let previewLine = null;
+
+            body.classList.add('locked');
+
+            function placeDots() {
+                const size = area.clientWidth;
+                const positions = [
+                    [0.18, 0.18], [0.50, 0.18], [0.82, 0.18],
+                    [0.18, 0.50], [0.50, 0.50], [0.82, 0.50],
+                    [0.18, 0.82], [0.50, 0.82], [0.82, 0.82]
+                ];
+
+                dots.forEach((dot, index) => {
+                    dot.style.left = `${positions[index][0] * size}px`;
+                    dot.style.top = `${positions[index][1] * size}px`;
+                });
+            }
+
+            function getDotCenter(dot) {
+                const areaRect = area.getBoundingClientRect();
+                const dotRect = dot.getBoundingClientRect();
+
+                return {
+                    x: dotRect.left - areaRect.left + dotRect.width / 2,
+                    y: dotRect.top - areaRect.top + dotRect.height / 2
+                };
+            }
+
+            function createSvgLine(from, to, isPreview = false) {
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+
+                line.setAttribute('x1', String(from.x));
+                line.setAttribute('y1', String(from.y));
+                line.setAttribute('x2', String(to.x));
+                line.setAttribute('y2', String(to.y));
+                line.setAttribute('class', isPreview ? 'pattern-line preview' : 'pattern-line');
+
+                svg.appendChild(line);
+
+                return line;
+            }
+
+            function clearPattern() {
+                selectedDots = [];
+                svg.innerHTML = '';
+                previewLine = null;
+
+                dots.forEach(dot => dot.classList.remove('active'));
+            }
+
+            function resetWithError() {
+                message.textContent = 'Неверный ключ. Попробуйте ещё раз';
+                message.classList.add('error');
+
+                card.classList.remove('shake');
+                void card.offsetWidth;
+                card.classList.add('shake');
+
+                setTimeout(() => {
+                    clearPattern();
+                    message.textContent = 'Проведите пальцем по точкам';
+                    message.classList.remove('error');
+                }, 650);
+            }
+
+            function unlockPage() {
+                message.textContent = 'Доступ открыт';
+                screen.classList.add('hidden');
+
+                setTimeout(() => {
+                    body.classList.remove('locked');
+                    screen.remove();
+                }, 360);
+            }
+
+            function findTouchedDot(clientX, clientY) {
+                return dots.find(dot => {
+                    const rect = dot.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    const radius = rect.width * 0.72;
+                    const distance = Math.hypot(clientX - centerX, clientY - centerY);
+
+                    return distance <= radius;
+                });
+            }
+
+            function addDot(dot) {
+                if (!dot || selectedDots.includes(dot)) {
+                    return;
+                }
+
+                const previousDot = selectedDots[selectedDots.length - 1];
+
+                selectedDots.push(dot);
+                dot.classList.add('active');
+
+                if (previousDot) {
+                    createSvgLine(getDotCenter(previousDot), getDotCenter(dot));
+                }
+            }
+
+            function updatePreviewLine(clientX, clientY) {
+                if (!selectedDots.length) {
+                    return;
+                }
+
+                const areaRect = area.getBoundingClientRect();
+                const lastDot = selectedDots[selectedDots.length - 1];
+                const from = getDotCenter(lastDot);
+                const to = {
+                    x: clientX - areaRect.left,
+                    y: clientY - areaRect.top
+                };
+
+                if (!previewLine) {
+                    previewLine = createSvgLine(from, to, true);
+                    return;
+                }
+
+                previewLine.setAttribute('x1', String(from.x));
+                previewLine.setAttribute('y1', String(from.y));
+                previewLine.setAttribute('x2', String(to.x));
+                previewLine.setAttribute('y2', String(to.y));
+            }
+
+            function getPointer(event) {
+                const touch = event.touches && event.touches[0];
+
+                return {
+                    x: touch ? touch.clientX : event.clientX,
+                    y: touch ? touch.clientY : event.clientY
+                };
+            }
+
+            function startDrawing(event) {
+                event.preventDefault();
+                clearPattern();
+
+                isDrawing = true;
+                message.textContent = 'Рисуйте ключ';
+                message.classList.remove('error');
+
+                const pointer = getPointer(event);
+                addDot(findTouchedDot(pointer.x, pointer.y));
+                updatePreviewLine(pointer.x, pointer.y);
+            }
+
+            function moveDrawing(event) {
+                if (!isDrawing) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                const pointer = getPointer(event);
+                const dot = findTouchedDot(pointer.x, pointer.y);
+
+                if (dot) {
+                    addDot(dot);
+                }
+
+                updatePreviewLine(pointer.x, pointer.y);
+            }
+
+            function finishDrawing(event) {
+                if (!isDrawing) {
+                    return;
+                }
+
+                event.preventDefault();
+                isDrawing = false;
+
+                if (previewLine) {
+                    previewLine.remove();
+                    previewLine = null;
+                }
+
+                const enteredPattern = selectedDots
+                    .map(dot => dot.dataset.dot)
+                    .join('');
+
+                if (enteredPattern === ACCESS_PATTERN) {
+                    unlockPage();
+                } else {
+                    resetWithError();
+                }
+            }
+
+            window.addEventListener('resize', placeDots);
+
+            area.addEventListener('mousedown', startDrawing);
+            area.addEventListener('mousemove', moveDrawing);
+            window.addEventListener('mouseup', finishDrawing);
+
+            area.addEventListener('touchstart', startDrawing, { passive: false });
+            area.addEventListener('touchmove', moveDrawing, { passive: false });
+            area.addEventListener('touchend', finishDrawing, { passive: false });
+            area.addEventListener('touchcancel', finishDrawing, { passive: false });
+
+            placeDots();
+        })();
+    </script>
+
 
     <script>
         (function () {
