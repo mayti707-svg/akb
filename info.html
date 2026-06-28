@@ -162,35 +162,14 @@ footer {
 }
 </style>
 </head>
-
 <body>
-
 <canvas id="digital-bg"></canvas>
-
 <div class="card">
-
     <h1>🏆 Алтыншебер</h1>
-
-    <h2 id="title">Конкурс завершён</h2>
-
-    <p id="text">
-        Уважаемые коллеги!<br><br>
-        Конкурс <b>«Алтыншебер»</b> завершён.<br>
-        Благодарим всех участников за проявленный интерес,
-        активность и профессионализм!
-    </p>
-
-    <div class="buttons">
-        <button onclick="kk()">Қазақша</button>
-        <button onclick="ru()">Русский</button>
-    </div>
-
     <footer>
         
     </footer>
-
 </div>
-
 <script>
 /*
     Цифровой фон без библиотек.
@@ -199,13 +178,11 @@ footer {
 
 const canvas = document.getElementById("digital-bg");
 const ctx = canvas.getContext("2d");
-
 let particles = [];
 let mouse = {
     x: null,
     y: null
 };
-
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -283,14 +260,12 @@ function drawParticles() {
 
     requestAnimationFrame(drawParticles);
 }
-
 window.addEventListener("resize", resizeCanvas);
 
 window.addEventListener("mousemove", function(event) {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
 });
-
 window.addEventListener("touchmove", function(event) {
     if (event.touches.length > 0) {
         mouse.x = event.touches[0].clientX;
@@ -301,25 +276,10 @@ window.addEventListener("touchmove", function(event) {
 resizeCanvas();
 drawParticles();
 </script>
-
 <script>
-function ru() {
-    document.documentElement.lang = "ru";
-
-    document.getElementById("title").innerHTML = "Конкурс завершён";
-
-    document.getElementById("text").innerHTML =
-    `Уважаемые коллеги!<br><br>
-    Конкурс <b>«Алтыншебер»</b> завершён.<br>
-    Благодарим всех участников за проявленный интерес,
-    активность и профессионализм!`;
-}
-
 function kk() {
     document.documentElement.lang = "kk";
-
     document.getElementById("title").innerHTML = "Байқау аяқталды";
-
     document.getElementById("text").innerHTML =
     `Құрметті әріптестер!<br><br>
     <b>«Алтыншебер»</b> байқауы аяқталды.<br>
