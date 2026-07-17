@@ -1,1082 +1,308 @@
+html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Алтын Шебер 2026</title>
-
-    <style>
-        @font-face {
-            font-family: 'Montserrat';
-            src: url('fonts/Montserrat-Regular.ttf') format('truetype');
-            font-weight: 400;
-        }
-        @font-face {
-            font-family: 'Montserrat';
-            src: url('fonts/Montserrat-SemiBold.ttf') format('truetype');
-            font-weight: 600;
-        }
-        @font-face {
-            font-family: 'Montserrat';
-            src: url('fonts/Montserrat-Bold.ttf') format('truetype');
-            font-weight: 700;
-        }
-        @font-face {
-            font-family: 'Montserrat';
-            src: url('fonts/Montserrat-Black.ttf') format('truetype');
-            font-weight: 900;
-        }
-
-        :root {
-            --bg: #080b10;
-            --card: rgba(16, 22, 31, 0.92);
-            --card-border: rgba(212, 175, 55, 0.16);
-            --gold: #d4af37;
-            --gold-light: #f7df8a;
-            --text: #f0eee8;
-            --muted: rgba(255, 255, 255, 0.54);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            min-height: 100%;
-            background: var(--bg);
-        }
-
-        body {
-            min-height: 100vh;
-            padding: 28px 16px 42px;
-            font-family: 'Montserrat', Arial, sans-serif;
-            color: var(--text);
-            background:
-                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12), transparent 34%),
-                radial-gradient(circle at 50% 100%, rgba(160, 95, 20, 0.13), transparent 38%),
-                linear-gradient(135deg, #07090d 0%, #10151d 45%, #07090d 100%);
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.52;
-            background-image:
-                repeating-linear-gradient(45deg, transparent 0 86px, rgba(212, 175, 55, 0.06) 87px, transparent 89px),
-                repeating-linear-gradient(-45deg, transparent 0 86px, rgba(212, 175, 55, 0.035) 87px, transparent 89px);
-        }
-
-        .app {
-            width: min(100%, 1400px);
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            opacity: 0;
-            transform: translateY(16px);
-            animation: pageIn 0.75s ease forwards;
-            animation-delay: 2.35s;
-        }
-
-        .intro {
-            position: fixed;
-            inset: 0;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background:
-                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.18), transparent 35%),
-                #07090d;
-            animation: introOut 0.8s ease forwards;
-            animation-delay: 2.05s;
-        }
-
-        .intro-logo {
-            width: clamp(145px, 28vw, 245px);
-            height: auto;
-            filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.34));
-            animation: logoPulse 1.75s ease-in-out forwards;
-        }
-
-        .intro-title {
-            margin-top: 22px;
-            font-size: clamp(1.35rem, 4vw, 2.5rem);
-            font-weight: 800;
-            letter-spacing: clamp(3px, 1vw, 8px);
-            color: var(--gold-light);
-            text-align: center;
-            text-shadow: 0 0 24px rgba(212, 175, 55, 0.32);
-            opacity: 0;
-            transform: translateY(10px);
-            animation: introTitleIn 0.7s ease forwards;
-            animation-delay: 0.75s;
-        }
-
-        .lang-switcher {
-            position: fixed !important;
-            top: 40px !important;
-            right: 14px !important;
-            z-index: 9999 !important;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 5px;
-            border: 1px solid rgba(212, 175, 55,0.18);
-            border-radius: 999px;
-            background: rgba(12, 13, 15, 0.64);
-            backdrop-filter: blur(14px);
-           -webkit-backdrop-filter: blur(14px);
-        }
-
-        .lang-btn {
-            min-width: 48px;
-            border: 0;
-            border-radius: 999px;
-            padding: 8px 10px;
-            font: 800 0.78rem 'Montserrat', Arial, sans-serif;
-            color: rgba(255, 255, 255, 0.48);
-            background: transparent;
-            cursor: pointer;
-        }
-
-        .lang-btn.active {
-            color: #141006;
-            background: linear-gradient(180deg, var(--gold-light), var(--gold));
-            box-shadow: 0 0 18px rgba(212, 175, 55, 0.2);
-        }
-
-        .header {
-            padding-top: 8px;
-            margin-bottom: clamp(26px, 4vw, 54px);
-            text-align: center;
-        }
-
-        .header-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .company-logo {
-            width: clamp(88px, 12vw, 132px);
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.22));
-            animation: headerLogoIn 0.85s ease both;
-            animation-delay: 2.55s;
-        }
-
-        .event-name {
-            margin-top: 12px;
-            font-size: clamp(1.05rem, 2vw, 1.65rem);
-            font-weight: 800;
-            letter-spacing: clamp(3px, 0.8vw, 7px);
-            color: var(--gold-light);
-            text-shadow: 0 0 22px rgba(212, 175, 55, 0.2);
-        }
-
-        .header h1 {
-            font-size: clamp(2.1rem, 5vw, 4.4rem);
-            line-height: 1.1;
-            font-weight: 900;
-            letter-spacing: 1px;
-            background: linear-gradient(180deg, #fff0ad 0%, #d4af37 44%, #9d7620 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .header h1 .accent {
-            font-weight: 400;
-            letter-spacing: 0.08em;
-            background: linear-gradient(180deg, #ded1b4, #a5967a);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .header p {
-            margin-top: 12px;
-            color: var(--muted);
-            font-size: clamp(0.95rem, 1.6vw, 1.3rem);
-            font-weight: 600;
-        }
-
-        .header-line {
-            width: min(180px, 46vw);
-            height: 3px;
-            margin: 18px auto 0;
-            border-radius: 999px;
-            background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
-            opacity: 0.7;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: clamp(14px, 2vw, 22px);
-        }
-
-        .card {
-            min-width: 0;
-            min-height: 230px;
-            padding: 26px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border: 1px solid rgba(255, 255, 255, 0.045);
-            border-radius: 22px;
-            background: linear-gradient(145deg, rgba(18, 24, 34, 0.95), rgba(10, 14, 20, 0.96));
-            box-shadow:
-                0 18px 55px rgba(0, 0, 0, 0.36),
-                inset 0 0 0 1px rgba(212, 175, 55, 0.045);
-            overflow: hidden;
-            position: relative;
-            transform: translateY(18px);
-            opacity: 0;
-            animation: cardIn 0.62s ease forwards;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.14), transparent 42%);
-            transition: opacity 0.3s ease;
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card-number {
-            position: relative;
-            z-index: 1;
-            margin-bottom: 18px;
-            text-align: center;
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 3px;
-            color: rgba(212, 175, 55, 0.42);
-        }
-
-        .card-title {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            margin: auto 0 24px;
-            color: #f1eee8;
-            font-size: clamp(0.96rem, 1.35vw, 1.12rem);
-            line-height: 1.45;
-            font-weight: 800;
-            text-align: center;
-            overflow-wrap: anywhere;
-            word-break: normal;
-            hyphens: auto;
-        }
-
-        .card-title .highlight,
-        .card-title .soft {
-            color: var(--gold);
-        }
-
-        .badge-practice {
-            display: inline-flex;
-            margin-top: 7px;
-            padding: 3px 11px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 999px;
-            color: var(--gold);
-            background: rgba(212, 175, 55, 0.1);
-            font-size: 0.68rem;
-            letter-spacing: 1px;
-            white-space: nowrap;
-        }
-
-        .card-link {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-            min-height: 54px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 13px 16px;
-            border: 1px solid rgba(212, 175, 55, 0.28);
-            border-radius: 999px;
-            color: var(--gold-light);
-            background: linear-gradient(135deg, rgba(52, 37, 16, 0.96), rgba(33, 25, 15, 0.98));
-            text-decoration: none;
-            font-size: 0.92rem;
-            font-weight: 900;
-            text-align: center;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        }
-
-        .card-link .icon {
-            flex: 0 0 auto;
-            font-size: 1.14rem;
-            line-height: 1;
-        }
-
-        .card-link:hover,
-        .card-link:active {
-            transform: translateY(-2px);
-            border-color: rgba(247, 223, 138, 0.5);
-            box-shadow: 0 0 24px rgba(212, 175, 55, 0.16);
-        }
-
-        .footer {
-            margin-top: 42px;
-            padding-top: 22px;
-            border-top: 1px solid rgba(255, 255, 255, 0.055);
-            text-align: center;
-            color: rgba(255, 255, 255, 0.24);
-            font-size: 0.78rem;
-            letter-spacing: 2px;
-        }
-
-        .footer span {
-            color: rgba(212, 175, 55, 0.35);
-        }
-
-        .gold-ingot {
-            position: fixed;
-            z-index: 0;
-            width: 96px;
-            height: 36px;
-            border-radius: 10px;
-            border: 1px solid rgba(212, 175, 55, 0.08);
-            background: rgba(212, 175, 55, 0.035);
-            pointer-events: none;
-            transform: rotate(14deg);
-        }
-
-        .gold-ingot::after {
-            content: '✦';
-            position: absolute;
-            inset: 0;
-            display: grid;
-            place-items: center;
-            color: rgba(212, 175, 55, 0.12);
-        }
-
-        .gold-ingot:nth-of-type(1) { top: 62px; left: 2%; }
-        .gold-ingot:nth-of-type(2) { top: 28%; right: 3%; transform: rotate(-20deg); }
-        .gold-ingot:nth-of-type(3) { bottom: 22%; left: 1%; transform: rotate(-8deg); }
-        .gold-ingot:nth-of-type(4) { bottom: 12%; right: 4%; transform: rotate(20deg); }
-
-        @keyframes logoPulse {
-            0% { opacity: 0; transform: scale(0.72); }
-            35% { opacity: 1; transform: scale(1.08); }
-            72% { opacity: 1; transform: scale(1); }
-            100% { opacity: 1; transform: scale(1.08); }
-        }
-
-        @keyframes introTitleIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes introOut {
-            to { opacity: 0; visibility: hidden; pointer-events: none; }
-        }
-
-        @keyframes pageIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes headerLogoIn {
-            from { opacity: 0; transform: scale(1.25); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes cardIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .card:nth-child(1) { animation-delay: 2.55s; }
-        .card:nth-child(2) { animation-delay: 2.62s; }
-        .card:nth-child(3) { animation-delay: 2.69s; }
-        .card:nth-child(4) { animation-delay: 2.76s; }
-        .card:nth-child(5) { animation-delay: 2.83s; }
-        .card:nth-child(6) { animation-delay: 2.90s; }
-        .card:nth-child(7) { animation-delay: 2.97s; }
-        .card:nth-child(8) { animation-delay: 3.04s; }
-        .card:nth-child(9) { animation-delay: 3.11s; }
-        .card:nth-child(10) { animation-delay: 3.18s; }
-        .card:nth-child(11) { animation-delay: 3.25s; }
-        .card:nth-child(12) { animation-delay: 3.32s; }
-        .card:nth-child(13) { animation-delay: 3.39s; }
-
-        @media (max-width: 1180px) {
-            .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-        }
-
-        @media (max-width: 860px) {
-            body { padding: 72px 12px 32px; }
-            .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .card { min-height: 215px; padding: 22px; }
-        }
-
-        @media (max-width: 560px) {
-            body { padding: 72px 10px 28px; }
-            .lang-switcher { top: 10px; right: 10px; }
-            .lang-btn { min-width: 42px; padding: 7px 8px; font-size: 0.72rem; }
-            .grid { grid-template-columns: 1fr; gap: 13px; }
-            .card {
-                min-height: 0;
-                padding: 20px;
-                border-radius: 18px;
-            }
-            .card-number { margin-bottom: 12px; }
-            .card-title {
-                margin-bottom: 18px;
-                font-size: 1rem;
-            }
-            .card-link {
-                min-height: 52px;
-                font-size: 0.9rem;
-            }
-            .header { margin-bottom: 26px; }
-            .company-logo { width: 92px; }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-            .intro { display: none; }
-            .app, .card { opacity: 1; transform: none; }
-        }
-
-        /* ===== ГРАФИЧЕСКИЙ КЛЮЧ ДОСТУПА ===== */
-        body.locked {
-            overflow: hidden;
-        }
-
-        body.locked .app,
-        body.locked .lang-switcher,
-        body.locked .intro,
-        body.locked .gold-ingot {
-            opacity: 0 !important;
-            visibility: hidden !important;
-            pointer-events: none !important;
-        }
-
-        .pattern-lock-screen {
-            position: fixed;
-            inset: 0;
-            z-index: 5000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            background:
-                radial-gradient(circle at 50% 18%, rgba(212, 175, 55, 0.18), transparent 34%),
-                radial-gradient(circle at 50% 90%, rgba(160, 95, 20, 0.14), transparent 38%),
-                linear-gradient(135deg, #07090d 0%, #10151d 48%, #07090d 100%);
-            transition: opacity 0.35s ease, visibility 0.35s ease;
-        }
-
-        .pattern-lock-screen.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .pattern-lock-card {
-            width: min(100%, 430px);
-            padding: 30px 24px 28px;
-            border: 1px solid rgba(212, 175, 55, 0.22);
-            border-radius: 28px;
-            background: linear-gradient(145deg, rgba(18, 24, 34, 0.96), rgba(8, 12, 18, 0.98));
-            box-shadow:
-                0 28px 80px rgba(0, 0, 0, 0.54),
-                inset 0 0 0 1px rgba(212, 175, 55, 0.05);
-            text-align: center;
-        }
-
-        .pattern-lock-logo {
-            width: 86px;
-            height: auto;
-            margin-bottom: 18px;
-            filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.28));
-        }
-
-        .pattern-lock-title {
-            margin-bottom: 8px;
-            color: var(--gold-light);
-            font-size: 1.28rem;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        .pattern-lock-subtitle {
-            margin-bottom: 22px;
-            color: rgba(255, 255, 255, 0.56);
-            font-size: 0.9rem;
-            font-weight: 600;
-            line-height: 1.45;
-        }
-
-        .pattern-area {
-            position: relative;
-            width: 300px;
-            height: 300px;
-            max-width: 76vw;
-            max-height: 76vw;
-            margin: 0 auto 18px;
-            touch-action: none;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .pattern-lines {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-            pointer-events: none;
-        }
-
-        .pattern-line {
-            stroke: var(--gold);
-            stroke-width: 7;
-            stroke-linecap: round;
-            opacity: 0.86;
-            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
-        }
-
-        .pattern-line.preview {
-            opacity: 0.5;
-        }
-
-        .pattern-dot {
-            position: absolute;
-            width: 62px;
-            height: 62px;
-            margin: -31px 0 0 -31px;
-            border: 2px solid rgba(212, 175, 55, 0.34);
-            border-radius: 50%;
-            background:
-                radial-gradient(circle, rgba(247, 223, 138, 0.22) 0 18%, rgba(212, 175, 55, 0.08) 19% 44%, rgba(255, 255, 255, 0.025) 45% 100%);
-            box-shadow: inset 0 0 18px rgba(212, 175, 55, 0.08);
-            transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
-        }
-
-        .pattern-dot.active {
-            transform: scale(1.08);
-            border-color: rgba(247, 223, 138, 0.95);
-            background:
-                radial-gradient(circle, var(--gold-light) 0 18%, rgba(212, 175, 55, 0.44) 19% 48%, rgba(212, 175, 55, 0.12) 49% 100%);
-            box-shadow:
-                0 0 22px rgba(212, 175, 55, 0.34),
-                inset 0 0 18px rgba(247, 223, 138, 0.16);
-        }
-
-        .pattern-message {
-            min-height: 22px;
-            color: rgba(255, 255, 255, 0.62);
-            font-size: 0.86rem;
-            font-weight: 700;
-        }
-
-        .pattern-message.error {
-            color: #ff8b8b;
-        }
-
-        .pattern-lock-card.shake {
-            animation: patternShake 0.35s ease;
-        }
-
-        @keyframes patternShake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-9px); }
-            40% { transform: translateX(8px); }
-            60% { transform: translateX(-6px); }
-            80% { transform: translateX(5px); }
-        }
-
-        @media (max-width: 420px) {
-            .pattern-lock-card {
-                padding: 26px 18px 24px;
-                border-radius: 22px;
-            }
-
-            .pattern-area {
-                width: 270px;
-                height: 270px;
-            }
-
-            .pattern-dot {
-                width: 56px;
-                height: 56px;
-                margin: -28px 0 0 -28px;
-            }
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Алтыншебер</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background: #07111f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    position: relative;
+}
+
+/* Canvas-фон с цифровыми частицами */
+#digital-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.35), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.18), transparent 28%),
+        linear-gradient(135deg, #020617, #0f172a, #1e3a8a);
+}
+
+/* Карточка поверх фона */
+.card {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    width: 100%;
+    padding: 45px;
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.11);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 22px;
+
+    box-shadow:
+        0 0 70px rgba(37, 99, 235, 0.28),
+        0 25px 60px rgba(0, 0, 0, 0.55);
+
+    animation: fade 1s ease;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #FFD700;
+    text-shadow: 0 0 22px rgba(255, 215, 0, 0.45);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+}
+
+p {
+    font-size: 20px;
+    line-height: 1.7;
+}
+
+.buttons {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    background: #FFD700;
+    color: #222;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: #ffffff;
+}
+
+footer {
+    margin-top: 35px;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    body {
+        overflow-y: auto;
+    }
+
+    .card {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 18px;
+    }
+
+    button {
+        width: 140px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Экран графического ключа. До правильного ввода основной index.html полностью скрыт. -->
-    <div class="pattern-lock-screen" id="patternLockScreen">
-        <div class="pattern-lock-card" id="patternLockCard">
-            <img src="altyn.png" alt="Алтыналмас" class="pattern-lock-logo" />
-            <div class="pattern-lock-title">Введите графический ключ</div>
-            <div class="pattern-lock-subtitle">Нарисуйте правильный ключ, чтобы открыть страницу</div>
+<canvas id="digital-bg"></canvas>
 
-            <div class="pattern-area" id="patternArea" aria-label="Графический ключ">
-                <svg class="pattern-lines" id="patternLines"></svg>
-                <div class="pattern-dot" data-dot="1"></div>
-                <div class="pattern-dot" data-dot="2"></div>
-                <div class="pattern-dot" data-dot="3"></div>
-                <div class="pattern-dot" data-dot="4"></div>
-                <div class="pattern-dot" data-dot="5"></div>
-                <div class="pattern-dot" data-dot="6"></div>
-                <div class="pattern-dot" data-dot="7"></div>
-                <div class="pattern-dot" data-dot="8"></div>
-                <div class="pattern-dot" data-dot="9"></div>
-            </div>
+<div class="card">
 
-            <div class="pattern-message" id="patternMessage">Проведите пальцем по точкам</div>
-        </div>
-    </div>
+    <h1>🏆 Алтыншебер</h1>
 
-    <div class="intro" id="intro">
-        <img src="altyn.png" alt="Алтыналмас" class="intro-logo" />
-        <div class="intro-title">Алтын Шебер 2026</div>
-    </div>
+    <h2 id="title">Байқау аяқталды</h2>
 
-    <div class="gold-ingot"></div>
-    <div class="gold-ingot"></div>
-    <div class="gold-ingot"></div>
-    <div class="gold-ingot"></div>
+    <p id="text">
+        Құрметті әріптестер!!<br><br>
+        <b>«Алтыншебер»</b> байқауы аяқталды.<br>
+        Барлық қатысушыларға белсенділігі, қызығушылығы және кәсібилігі үшін алғысымызды білдіреміз!
+    </p>
 
-    <div class="lang-switcher" id="langSwitcher" aria-label="Выбор языка">
-        <button class="lang-btn" type="button" data-lang="ru" id="langRu">RU</button>
-        <button class="lang-btn active" type="button" data-lang="kz" id="langKz">KZ</button>
-    </div>
+    <footer>
+       
+    </footer>
 
-    <main class="app">
-        <header class="header">
-            <div class="header-logo">
-                <img src="altyn.png" alt="Алтыналмас" class="company-logo" />
-                <div class="event-name">Алтын Шебер 2026</div>
-            </div>
+</div>
 
-            <h1 id="mainTitle">Металлург <span class="accent">күнімен!</span></h1>
-            <p id="subTitle">Болашақты балқытатын мамандықтар</p>
-            <div class="header-line"></div>
-        </header>
+<script>
+/*
+    Цифровой фон без библиотек.
+    Работает локально, в GitHub Pages и внутри Android WebView.
+*/
 
-        <section class="grid" id="cardsGrid" aria-label="Список профессий">
-            <article class="card" data-id="1">
-                <div class="card-number">№ 01</div>
-                <div class="card-title" data-title-kz="Дробильщик" data-title-ru="Дробильщик Алтын">Дробильщик</div>
-                <a class="card-link" href="https://forms.office.com/r/1Ajs5WV9rU" data-href-kz="https://forms.office.com/r/1Ajs5WV9rU" data-href-ru="https://forms.office.com/r/GYz9iQE9Jr"><span class="icon">⛏</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
+const canvas = document.getElementById("digital-bg");
+const ctx = canvas.getContext("2d");
 
-            <article class="card" data-id="2">
-                <div class="card-number">№ 02</div>
-                <div class="card-title" data-title-kz="Машинист конвейера" data-title-ru="Машинист конвейера">Машинист конвейера</div>
-                <a class="card-link" href="https://forms.office.com/r/5RbnkjVYSP" data-href-kz="https://forms.office.com/r/5RbnkjVYSP" data-href-ru="https://forms.office.com/r/BxyAupABaX"><span class="icon">⚙</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
+let particles = [];
+let mouse = {
+    x: null,
+    y: null
+};
 
-            <article class="card" data-id="3">
-                <div class="card-number">№ 03</div>
-                <div class="card-title" data-title-kz="Машинист мельницы" data-title-ru="Машинист мельницы">Машинист мельницы</div>
-                <a class="card-link" href="https://forms.office.com/r/hVjdrWCESz" data-href-kz="https://forms.office.com/r/hVjdrWCESz" data-href-ru="https://forms.office.com/r/QE5DaxMWa3"><span class="icon">🔄</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    createParticles();
+}
 
-            <article class="card" data-id="4">
-                <div class="card-number">№ 04</div>
-                <div class="card-title" data-title-kz="Растворщик реагентов" data-title-ru="Растворщик реагентов">Растворщик реагентов</div>
-                <a class="card-link" href="https://forms.office.com/r/RZDa3W7n1S" data-href-kz="https://forms.office.com/r/RZDa3W7n1S" data-href-ru="https://forms.office.com/r/fJ4kkqErnX"><span class="icon">🧪</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
+function createParticles() {
+    particles = [];
 
-            <article class="card" data-id="5">
-                <div class="card-number">№ 05</div>
-                <div class="card-title" data-title-kz="Аппаратчик обогащения золотосодержащих руд (сорбция золото)" data-title-ru="Аппаратчик обогащения золотосодержащих руд (сорбция золото)">Аппаратчик обогащения золотосодержащих руд (сорбция золото)</div>
-                <a class="card-link" href="https://forms.office.com/r/APJpebNwFV" data-href-kz="https://forms.office.com/r/APJpebNwFV" data-href-ru="https://forms.office.com/r/AFhqWCHRU9"><span class="icon">🥇</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
+    const count = window.innerWidth < 600 ? 45 : 90;
 
-            <article class="card" data-id="6">
-                <div class="card-number">№ 06</div>
-                <div class="card-title" data-title-kz="Аппаратчик обогащения золотосодержащих руд (десорбция)" data-title-ru="Аппаратчик обогащения золотосодержащих руд (десорбция)">Аппаратчик обогащения золотосодержащих руд (десорбция)</div>
-                <a class="card-link" href="https://forms.office.com/r/Yv7fN8n0Sx" data-href-kz="https://forms.office.com/r/Yv7fN8n0Sx" data-href-ru="https://forms.office.com/Pages/ResponsePage.aspx?id=mDimTfCCv0SYJnh9UFjNgB2uBGmSrR9LofuMfTqkbcBUMDJHQVJJS1ZOT0ZIMFY4QkVIU01aSjlLTiQlQCNjPTEkJUAjdD1n"><span class="icon">💧</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
+    for (let i = 0; i < count; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2.5 + 1,
+            speedX: (Math.random() - 0.5) * 0.7,
+            speedY: (Math.random() - 0.5) * 0.7,
+            color: Math.random() > 0.78 ? "#FFD700" : "#60a5fa"
+        });
+    }
+}
 
-            <article class="card" data-id="7">
-                <div class="card-number">№ 07</div>
-                <div class="card-title" data-title-kz="Лаборант по контролю технологического процесса" data-title-ru="Лаборант по контролю технологического процесса">Лаборант по контролю технологического процесса</div>
-                <a class="card-link" href="https://forms.office.com/r/YkH9GfiZPa" data-href-kz="https://forms.office.com/r/YkH9GfiZPa" data-href-ru="https://forms.cloud.microsoft/r/j4CCsLndAg"><span class="icon">🔬</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
+function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            <article class="card" data-id="8">
-                <div class="card-number">№ 08</div>
-                <div class="card-title" data-title-kz="Слесарь по обслуживанию и ремонту оборудования" data-title-ru="Слесарь по обслуживанию и ремонту оборудования">Слесарь по обслуживанию и ремонту оборудования</div>
-                <a class="card-link" href="https://forms.office.com/Pages/ResponsePage.aspx?id=mDimTfCCv0SYJnh9UFjNgB2uBGmSrR9LofuMfTqkbcBUQ1JJN0o2SFdSV0ZPWU1aSFY0VkJSV0laRiQlQCN0PWcu" data-href-kz="https://forms.office.com/Pages/ResponsePage.aspx?id=mDimTfCCv0SYJnh9UFjNgB2uBGmSrR9LofuMfTqkbcBUQ1JJN0o2SFdSV0ZPWU1aSFY0VkJSV0laRiQlQCN0PWcu" data-href-ru="https://forms.office.com/r/ybsqPwwnrb"><span class="icon">🔧</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
+    for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
 
-            <article class="card" data-id="9">
-                <div class="card-number">№ 09</div>
-                <div class="card-title" data-title-kz="Электрогазосварщик" data-title-ru="Электрогазосварщик">Электрогазосварщик</div>
-                <a class="card-link" href="https://forms.office.com/r/Tuady3z1f8" data-href-kz="https://forms.office.com/r/Tuady3z1f8" data-href-ru="https://forms.office.com/r/hZMUGjNdke"><span class="icon">⚡</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
+        p.x += p.speedX;
+        p.y += p.speedY;
 
-            <article class="card" data-id="10">
-                <div class="card-number">№ 10</div>
-                <div class="card-title" data-title-kz="Электрослесарь по ОРиО" data-title-ru="Электрослесарь по ОРиО">Электрослесарь по ОРиО</div>
-                <a class="card-link" href="https://forms.office.com/r/zHFv1tRTUG" data-href-kz="https://forms.office.com/r/zHFv1tRTUG" data-href-ru="https://forms.office.com/r/hZMUGjNdke"><span class="icon">🔌</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
+        if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
 
-            <article class="card" data-id="11">
-                <div class="card-number">№ 11</div>
-                <div class="card-title" data-title-kz="Плавильщик" data-title-ru="Плавильщик">Плавильщик</div>
-                <a class="card-link" href="https://forms.office.com/r/cpPHaKgHRw" data-href-kz="https://forms.office.com/r/cpPHaKgHRw" data-href-ru="https://forms.cloud.microsoft/r/8nByFM1xE1"><span class="icon">🔥</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.shadowBlur = 14;
+        ctx.shadowColor = p.color;
+        ctx.fill();
+        ctx.shadowBlur = 0;
 
-            <article class="card" data-id="11-2">
-                <div class="card-number">№ 11/2</div>
-                <div class="card-title" data-title-kz="Плавильщик ПРАКТИКА" data-title-ru="Плавильщик ПРАКТИКА">Плавильщик <span class="badge-practice">ПРАКТИКА</span></div>
-                <a class="card-link" href="https://forms.office.com/r/3KsT1wLRxA" data-href-kz="https://forms.office.com/r/3KsT1wLRxA" data-href-ru="https://forms.office.com/r/3KsT1wLRxA"><span class="icon">🧑‍🏭</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
+        for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
 
-            <article class="card" data-id="12">
-                <div class="card-number">№ 12</div>
-                <div class="card-title" data-title-kz="Контролер продукции обогащения" data-title-ru="Контролер продукции обогащения">Контролер продукции обогащения</div>
-                <a class="card-link" href="https://forms.office.com/r/NwwDNBFXAa" data-href-kz="https://forms.office.com/r/NwwDNBFXAa" data-href-ru="https://forms.office.com/Pages/ResponsePage.aspx?id=mDimTfCCv0SYJnh9UFjNgB2uBGmSrR9LofuMfTqkbcBUNkVERENDN0k3VzBVMldEWDVGN044NEIyVSQlQCNjPTEkJUAjdD1n"><span class="icon">📋</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>
-        </section>
-
-        <footer class="footer">
-            <span>✦</span> <span id="footerText">Металды жасайтын әркімге құрметпен</span> <span>✦</span>
-        </footer>
-    </main>
-
-
-    <script>
-        (function () {
-            /**
-             * Графический ключ для открытия страницы.
-             *
-             * Сейчас правильный ключ задан как буква "М":
-             * 7 → 4 → 1 → 5 → 3 → 6 → 9
-             *
-             * Схема точек:
-             * 1 2 3
-             * 4 5 6
-             * 7 8 9
-             *
-             * Если нужен другой ключ — поменяйте значение ACCESS_PATTERN.
-             */
-            const ACCESS_PATTERN = '7415369';
-
-            const body = document.body;
-            const screen = document.getElementById('patternLockScreen');
-            const card = document.getElementById('patternLockCard');
-            const area = document.getElementById('patternArea');
-            const svg = document.getElementById('patternLines');
-            const message = document.getElementById('patternMessage');
-            const dots = Array.from(area.querySelectorAll('.pattern-dot'));
-
-            let isDrawing = false;
-            let selectedDots = [];
-            let previewLine = null;
-
-            body.classList.add('locked');
-
-            function placeDots() {
-                const size = area.clientWidth;
-                const positions = [
-                    [0.18, 0.18], [0.50, 0.18], [0.82, 0.18],
-                    [0.18, 0.50], [0.50, 0.50], [0.82, 0.50],
-                    [0.18, 0.82], [0.50, 0.82], [0.82, 0.82]
-                ];
-
-                dots.forEach((dot, index) => {
-                    dot.style.left = `${positions[index][0] * size}px`;
-                    dot.style.top = `${positions[index][1] * size}px`;
-                });
+            if (distance < 145) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(96, 165, 250, ${1 - distance / 145})`;
+                ctx.lineWidth = 0.7;
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
             }
+        }
 
-            function getDotCenter(dot) {
-                const areaRect = area.getBoundingClientRect();
-                const dotRect = dot.getBoundingClientRect();
+        if (mouse.x && mouse.y) {
+            const dxMouse = p.x - mouse.x;
+            const dyMouse = p.y - mouse.y;
+            const mouseDistance = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
 
-                return {
-                    x: dotRect.left - areaRect.left + dotRect.width / 2,
-                    y: dotRect.top - areaRect.top + dotRect.height / 2
-                };
+            if (mouseDistance < 180) {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(255, 215, 0, ${1 - mouseDistance / 180})`;
+                ctx.lineWidth = 1;
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
             }
+        }
+    }
 
-            function createSvgLine(from, to, isPreview = false) {
-                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    requestAnimationFrame(drawParticles);
+}
 
-                line.setAttribute('x1', String(from.x));
-                line.setAttribute('y1', String(from.y));
-                line.setAttribute('x2', String(to.x));
-                line.setAttribute('y2', String(to.y));
-                line.setAttribute('class', isPreview ? 'pattern-line preview' : 'pattern-line');
+window.addEventListener("resize", resizeCanvas);
 
-                svg.appendChild(line);
+window.addEventListener("mousemove", function(event) {
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
+});
 
-                return line;
-            }
+window.addEventListener("touchmove", function(event) {
+    if (event.touches.length > 0) {
+        mouse.x = event.touches[0].clientX;
+        mouse.y = event.touches[0].clientY;
+    }
+});
 
-            function clearPattern() {
-                selectedDots = [];
-                svg.innerHTML = '';
-                previewLine = null;
+resizeCanvas();
+drawParticles();
+</script>
 
-                dots.forEach(dot => dot.classList.remove('active'));
-            }
+<script>
+function kk() {
+    document.documentElement.lang = "kk";
+    document.getElementById("title").innerHTML = "Байқау аяқталды";
+    document.getElementById("text").innerHTML =
+    `Құрметті әріптестер!<br><br>
+    <b>«Алтыншебер»</b> байқауы аяқталды.<br>
+    Барлық қатысушыларға белсенділігі, қызығушылығы және кәсібилігі үшін алғысымызды білдіреміз!`;
+}
+</script>
 
-            function resetWithError() {
-                message.textContent = 'Неверный ключ. Попробуйте ещё раз';
-                message.classList.add('error');
-
-                card.classList.remove('shake');
-                void card.offsetWidth;
-                card.classList.add('shake');
-
-                setTimeout(() => {
-                    clearPattern();
-                    message.textContent = 'Проведите пальцем по точкам';
-                    message.classList.remove('error');
-                }, 650);
-            }
-
-            function unlockPage() {
-                message.textContent = 'Доступ открыт';
-                screen.classList.add('hidden');
-
-                setTimeout(() => {
-                    body.classList.remove('locked');
-                    screen.remove();
-                }, 360);
-            }
-
-            function findTouchedDot(clientX, clientY) {
-                return dots.find(dot => {
-                    const rect = dot.getBoundingClientRect();
-                    const centerX = rect.left + rect.width / 2;
-                    const centerY = rect.top + rect.height / 2;
-                    const radius = rect.width * 0.72;
-                    const distance = Math.hypot(clientX - centerX, clientY - centerY);
-
-                    return distance <= radius;
-                });
-            }
-
-            function addDot(dot) {
-                if (!dot || selectedDots.includes(dot)) {
-                    return;
-                }
-
-                const previousDot = selectedDots[selectedDots.length - 1];
-
-                selectedDots.push(dot);
-                dot.classList.add('active');
-
-                if (previousDot) {
-                    createSvgLine(getDotCenter(previousDot), getDotCenter(dot));
-                }
-            }
-
-            function updatePreviewLine(clientX, clientY) {
-                if (!selectedDots.length) {
-                    return;
-                }
-
-                const areaRect = area.getBoundingClientRect();
-                const lastDot = selectedDots[selectedDots.length - 1];
-                const from = getDotCenter(lastDot);
-                const to = {
-                    x: clientX - areaRect.left,
-                    y: clientY - areaRect.top
-                };
-
-                if (!previewLine) {
-                    previewLine = createSvgLine(from, to, true);
-                    return;
-                }
-
-                previewLine.setAttribute('x1', String(from.x));
-                previewLine.setAttribute('y1', String(from.y));
-                previewLine.setAttribute('x2', String(to.x));
-                previewLine.setAttribute('y2', String(to.y));
-            }
-
-            function getPointer(event) {
-                const touch = event.touches && event.touches[0];
-
-                return {
-                    x: touch ? touch.clientX : event.clientX,
-                    y: touch ? touch.clientY : event.clientY
-                };
-            }
-
-            function startDrawing(event) {
-                event.preventDefault();
-                clearPattern();
-
-                isDrawing = true;
-                message.textContent = 'Рисуйте ключ';
-                message.classList.remove('error');
-
-                const pointer = getPointer(event);
-                addDot(findTouchedDot(pointer.x, pointer.y));
-                updatePreviewLine(pointer.x, pointer.y);
-            }
-
-            function moveDrawing(event) {
-                if (!isDrawing) {
-                    return;
-                }
-
-                event.preventDefault();
-
-                const pointer = getPointer(event);
-                const dot = findTouchedDot(pointer.x, pointer.y);
-
-                if (dot) {
-                    addDot(dot);
-                }
-
-                updatePreviewLine(pointer.x, pointer.y);
-            }
-
-            function finishDrawing(event) {
-                if (!isDrawing) {
-                    return;
-                }
-
-                event.preventDefault();
-                isDrawing = false;
-
-                if (previewLine) {
-                    previewLine.remove();
-                    previewLine = null;
-                }
-
-                const enteredPattern = selectedDots
-                    .map(dot => dot.dataset.dot)
-                    .join('');
-
-                if (enteredPattern === ACCESS_PATTERN) {
-                    unlockPage();
-                } else {
-                    resetWithError();
-                }
-            }
-
-            window.addEventListener('resize', placeDots);
-
-            area.addEventListener('mousedown', startDrawing);
-            area.addEventListener('mousemove', moveDrawing);
-            window.addEventListener('mouseup', finishDrawing);
-
-            area.addEventListener('touchstart', startDrawing, { passive: false });
-            area.addEventListener('touchmove', moveDrawing, { passive: false });
-            area.addEventListener('touchend', finishDrawing, { passive: false });
-            area.addEventListener('touchcancel', finishDrawing, { passive: false });
-
-            placeDots();
-        })();
-    </script>
-
-
-    <script>
-        (function () {
-            const langRu = document.getElementById('langRu');
-            const langKz = document.getElementById('langKz');
-            const mainTitle = document.getElementById('mainTitle');
-            const subTitle = document.getElementById('subTitle');
-            const footerText = document.getElementById('footerText');
-            const cards = document.querySelectorAll('.card');
-
-            const texts = {
-                ru: {
-                    main: 'С Днём <span class="accent">металлурга</span>',
-                    sub: 'профессии, которые плавят будущее',
-                    footer: 'С уважением к каждому, кто создаёт металл',
-                    link: 'Перейти к форме'
-                },
-                kz: {
-                    main: 'Металлург <span class="accent">күнімен!</span>',
-                    sub: 'Болашақты балқытатын мамандықтар',
-                    footer: 'Металды жасайтын әркімге құрметпен',
-                    link: 'Формаға өту'
-                }
-            };
-
-            function decorateTitle(card, title) {
-                const id = card.dataset.id;
-
-                if (id === '1' && title.includes('Алтын')) {
-                    return 'Дробильщик <span class="highlight">Алтын</span>';
-                }
-
-                if (id === '5' || id === '6') {
-                    return title
-                        .replace('золотосодержащих руд', '<span class="highlight">золотосодержащих руд</span>')
-                        .replace('(сорбция золото)', '<br><span class="soft">(сорбция золото)</span>')
-                        .replace('(десорбция)', '<br><span class="soft">(десорбция)</span>');
-                }
-
-                if (id === '11-2') {
-                    return 'Плавильщик <span class="badge-practice">ПРАКТИКА</span>';
-                }
-
-                return title;
-            }
-
-            function setLang(lang) {
-                langRu.classList.toggle('active', lang === 'ru');
-                langKz.classList.toggle('active', lang === 'kz');
-
-                mainTitle.innerHTML = texts[lang].main;
-                subTitle.textContent = texts[lang].sub;
-                footerText.textContent = texts[lang].footer;
-
-                cards.forEach(card => {
-                    const titleEl = card.querySelector('.card-title');
-                    const linkEl = card.querySelector('.card-link');
-                    const linkTextEl = card.querySelector('.link-text');
-
-                    const title = titleEl.getAttribute(`data-title-${lang}`);
-                    const href = linkEl.getAttribute(`data-href-${lang}`);
-
-                    if (title) titleEl.innerHTML = decorateTitle(card, title);
-                    if (href) linkEl.setAttribute('href', href);
-                    if (linkTextEl) linkTextEl.textContent = texts[lang].link;
-                });
-
-                localStorage.setItem('altynLang', lang);
-            }
-
-            langRu.addEventListener('click', () => setLang('ru'));
-            langKz.addEventListener('click', () => setLang('kz'));
-
-            setLang(localStorage.getItem('altynLang') || 'kz');
-        })();
-    </script>
 </body>
 </html>
