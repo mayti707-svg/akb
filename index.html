@@ -1034,28 +1034,7 @@
                     link: 'Формаға өту'
                 }
             };
-
-            function decorateTitle(card, title) {
-                const id = card.dataset.id;
-
-                if (id === '1' && title.includes('Алтын')) {
-                    return 'Дробильщик <span class="highlight">Алтын</span>';
-                }
-
-                if (id === '5' || id === '6') {
-                    return title
-                        .replace('золотосодержащих руд', '<span class="highlight">золотосодержащих руд</span>')
-                        .replace('(сорбция золото)', '<br><span class="soft">(сорбция золото)</span>')
-                        .replace('(десорбция)', '<br><span class="soft">(десорбция)</span>');
-                }
-
-                if (id === '11-2') {
-                    return 'Плавильщик <span class="badge-practice">ПРАКТИКА</span>';
-                }
-
-                return title;
-            }
-
+			
             function setLang(lang) {
                 langRu.classList.toggle('active', lang === 'ru');
                 langKz.classList.toggle('active', lang === 'kz');
