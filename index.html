@@ -302,84 +302,40 @@
             letter-spacing: 1px;
             white-space: nowrap;
         }
-	.card-link {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    min-height: 54px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 13px 16px;
-    border: 1px solid rgba(212, 175, 55, 0.28);
-    border-radius: 999px;
-    color: var(--gold-light);
-    background: linear-gradient(135deg, rgba(52, 37, 16, 0.96), rgba(33, 25, 15, 0.98));
-    text-decoration: none;
-    font-size: 0.92rem;
-    font-weight: 900;
-    text-align: center;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    
-    /* Обязательно добавляем сюда, чтобы блик не вылетал за скругленные углы */
-    overflow: hidden; 
-}
 
-.card-link .icon {
-    flex: 0 0 auto;
-    font-size: 1.14rem;
-    line-height: 1;
-}
+        .card-link {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            min-height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 13px 16px;
+            border: 1px solid rgba(212, 175, 55, 0.28);
+            border-radius: 999px;
+            color: var(--gold-light);
+            background: linear-gradient(135deg, rgba(52, 37, 16, 0.96), rgba(33, 25, 15, 0.98));
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 900;
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
 
-.card-link:hover,
-.card-link:active {
-    transform: translateY(-2px);
-    border-color: rgba(247, 223, 138, 0.5);
-    box-shadow: 0 0 24px rgba(212, 175, 55, 0.16);
-}
+        .card-link .icon {
+            flex: 0 0 auto;
+            font-size: 1.14rem;
+            line-height: 1;
+        }
 
-/* ==========================================================================
-   ДОБАВЛЕННЫЙ КОД ДЛЯ ЭФФЕКТА БЛИКА
-   ========================================================================== */
-
-/* Сам блик */
-.card-link::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -150%;
-    width: 60%;
-    height: 100%;
-    
-    /* Золотисто-белый мягкий градиент */
-    background: linear-gradient(
-        90deg,
-        rgba(255, 235, 165, 0) 0%,
-        rgba(255, 235, 165, 0.25) 30%,
-        rgba(255, 255, 255, 0.5) 50%,
-        rgba(255, 235, 165, 0.25) 70%,
-        rgba(255, 235, 165, 0) 100%
-    );
-    
-    transform: skewX(-25deg);
-    z-index: -1; /* Чтобы блик проходил ПОД текстом и иконкой, не мешая читать */
-}
-
-/* Запуск анимации при наведении */
-.card-link:hover::after {
-    animation: shimmer 1.2s ease-in-out infinite;
-}
-
-/* Логика движения блика */
-@keyframes shimmer {
-    0% {
-        left: -150%;
-    }
-    100% {
-        left: 150%;
-    }
-}
+        .card-link:hover,
+        .card-link:active {
+            transform: translateY(-2px);
+            border-color: rgba(247, 223, 138, 0.5);
+            box-shadow: 0 0 24px rgba(212, 175, 55, 0.16);
+        }
 
         .footer {
             margin-top: 42px;
@@ -681,7 +637,6 @@
         <img src="altyn.png" alt="Алтыналмас" class="intro-logo" />
         <div class="intro-title">Алтын Шебер 2026</div>
     </div>
-
     <div class="gold-ingot"></div>
     <div class="gold-ingot"></div>
     <div class="gold-ingot"></div>
@@ -699,8 +654,8 @@
                 <div class="event-name">Алтын Шебер 2026</div>
             </div>
 
-            <h1 id="mainTitle">Кенші<span class="accent">күнімен!</span></h1>
-            <p id="subTitle">Жерасты тау-кен өндірісінің мамандықтары</p>
+            <h1 id="mainTitle">Металлург <span class="accent">күнімен!</span></h1>
+            <p id="subTitle">Болашақты балқытатын мамандықтар</p>
             <div class="header-line"></div>
         </header>
 
@@ -708,73 +663,308 @@
             <article class="card" data-id="1">
                 <div class="card-number">№ 01</div>
                 <div class="card-title" data-title-kz="Взрывник" data-title-ru="Взрывник Алтын">Взрывник</div>
-                <a class="card-link" href="https://forms.cloud.microsoft/r/WzKAWKZ018" data-href-kz="https://forms.cloud.microsoft/r/WzKAWKZ018" data-href-ru="https://forms.cloud.microsoft/r/MR6F4t1Y1N"><span class="icon">💥</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/MR6F4t1Y1N" data-href-kz="https://forms.cloud.microsoft/r/WzKAWKZ018" data-href-ru="https://forms.cloud.microsoft/r/MR6F4t1Y1N"><span class="icon">💥</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
             </article>
 
             <article class="card" data-id="2">
                 <div class="card-number">№ 02</div>
                 <div class="card-title" data-title-kz="Крепильщик" data-title-ru="Крепильщик">Крепильщик</div>
-                <a class="card-link" href="https://forms.cloud.microsoft/r/xN2xw2suYM" data-href-kz="https://forms.cloud.microsoft/r/xN2xw2suYM" data-href-ru="https://forms.cloud.microsoft/r/46uzd2ZKCX"><span class="icon">🛠</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/46uzd2ZKCX" data-href-kz="https://forms.cloud.microsoft/r/xN2xw2suYM" data-href-ru="https://forms.cloud.microsoft/r/46uzd2ZKCX"><span class="icon">🛠</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
             </article>
 
             <article class="card" data-id="3">
                 <div class="card-number">№ 03</div>
                 <div class="card-title" data-title-kz="Машинист буровой установки" data-title-ru="Машинист буровой установки">Машинист буровой установки</div>
-                <a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/CJxr2fcUqc" data-href-ru="https://forms.cloud.microsoft/r/s9MSP9bnpq"><span class="icon">⛏</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/s9MSP9bnpq" data-href-kz="https://forms.cloud.microsoft/r/CJxr2fcUqc" data-href-ru="https://forms.cloud.microsoft/r/s9MSP9bnpq"><span class="icon">⛏</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
             </article>
 
             <article class="card" data-id="4">
                 <div class="card-number">№ 04</div>
                 <div class="card-title" data-title-kz="Машинист погрузочно-доставочной машины" data-title-ru="Машинист погрузочно-доставочной машины">Машинист погрузочно-доставочной машины</div>
-                <a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/632uX8ABQX" data-href-ru="https://forms.cloud.microsoft/r/sNddWUdQv3"><span class="icon">🚜</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/sNddWUdQv3" data-href-kz="https://forms.cloud.microsoft/r/632uX8ABQX" data-href-ru="https://forms.cloud.microsoft/r/sNddWUdQv3"><span class="icon">🚜</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
             </article>
 
             <article class="card" data-id="5">
                 <div class="card-number">№ 05</div>
                 <div class="card-title" data-title-kz="Машинист погрузочной машины" data-title-ru="Машинист погрузочной машины">Машинист погрузочной машины</div>
-                <a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/7FY0cY3YB9" data-href-ru="https://forms.cloud.microsoft/r/ar3a0AarFu"><span class="icon">⚙</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/ar3a0AarFu" data-href-kz="https://forms.cloud.microsoft/r/7FY0cY3YB9" data-href-ru="https://forms.cloud.microsoft/r/ar3a0AarFu"><span class="icon">⚙</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
             </article>
 
             <article class="card" data-id="6">
                 <div class="card-number">№ 06</div>
                 <div class="card-title" data-title-kz="Проходчик" data-title-ru="Проходчик">Проходчик</div>
-                <a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/vw2pKfgn46" data-href-ru="https://forms.cloud.microsoft/r/9RHZNC9FkB"><span class="icon">⛏</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/9RHZNC9FkB" data-href-kz="https://forms.cloud.microsoft/r/vw2pKfgn46" data-href-ru="https://forms.cloud.microsoft/r/9RHZNC9FkB"><span class="icon">⛏</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
             </article>
 
             <article class="card" data-id="7">
                 <div class="card-number">№ 07</div>
                 <div class="card-title" data-title-kz="Машинист подземных самоходных машин" data-title-ru="Машинист подземных самоходных машин">Машинист подземных самоходных машин</div>
-                <a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/LMqYDjS6wf" data-href-ru="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=mDimTfCCv0SYJnh9UFjNgB2uBGmSrR9LofuMfTqkbcBUMDJVQkw1S0hESFNKS1VBR0E0NjBORUdNQiQlQCNjPTEkJUAjdD1n"><span class="icon">🚧</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+                <a class="card-link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=mDimTfCCv0SYJnh9UFjNgB2uBGmSrR9LofuMfTqkbcBUMDJVQkw1S0hESFNKS1VBR0E0NjBORUdNQiQlQCNjPTEkJUAjdD1n" data-href-kz="https://forms.cloud.microsoft/r/LMqYDjS6wf" data-href-ru="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=mDimTfCCv0SYJnh9UFjNgB2uBGmSrR9LofuMfTqkbcBUMDJVQkw1S0hESFNKS1VBR0E0NjBORUdNQiQlQCNjPTEkJUAjdD1n"><span class="icon">🚧</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
             </article>
 
             <article class="card" data-id="8">
                 <div class="card-number">№ 08</div>
                 <div class="card-title" data-title-kz="Слесарь по обслуживанию и ремонту оборудования" data-title-ru="Слесарь по обслуживанию и ремонту оборудования">Слесарь по обслуживанию и ремонту оборудования</div>
-                <a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/LJ0pU7zETT" data-href-ru="https://forms.cloud.microsoft/r/QWVQCW1Qba"><span class="icon">🔧</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/QWVQCW1Qba" data-href-kz="https://forms.cloud.microsoft/r/LJ0pU7zETT" data-href-ru="https://forms.cloud.microsoft/r/QWVQCW1Qba"><span class="icon">🔧</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
             </article>
 
             <article class="card" data-id="9">
                 <div class="card-number">№ 09</div>
                 <div class="card-title" data-title-kz="Стволовой" data-title-ru="Стволовой">Стволовой</div>
-                <a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/px6H2Eab8w" data-href-ru="https://forms.cloud.microsoft/r/gw6Wf5cUMB"><span class="icon">🪝</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/gw6Wf5cUMB" data-href-kz="https://forms.cloud.microsoft/r/px6H2Eab8w" data-href-ru="https://forms.cloud.microsoft/r/gw6Wf5cUMB"><span class="icon">🪝</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
             </article>
 
             <article class="card" data-id="10">
                 <div class="card-number">№ 10</div>
                 <div class="card-title" data-title-kz="Электрогазосварщик" data-title-ru="Электрогазосварщик">Электрогазосварщик</div>
-                <a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/m8MxLWx1Fw" data-href-ru="https://forms.cloud.microsoft/r/jdbEu9swA4"><span class="icon">⚡</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/jdbEu9swA4" data-href-kz="https://forms.cloud.microsoft/r/m8MxLWx1Fw" data-href-ru="https://forms.cloud.microsoft/r/jdbEu9swA4"><span class="icon">⚡</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
             </article>
 
             <article class="card" data-id="11">
                 <div class="card-number">№ 11</div>
                 <div class="card-title" data-title-kz="Электрослесарь по обслуживанию и ремонту оборудования" data-title-ru="Электрослесарь по обслуживанию и ремонту оборудования">Электрослесарь по обслуживанию и ремонту оборудования</div>
-                <a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/7jNsgWx3sP" data-href-ru="https://forms.cloud.microsoft/r/unjBHRHJ37"><span class="icon">🔌</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
-            </article>	
+                <a class="card-link" href="https://forms.cloud.microsoft/r/unjBHRHJ37" data-href-kz="https://forms.cloud.microsoft/r/7jNsgWx3sP" data-href-ru="https://forms.cloud.microsoft/r/unjBHRHJ37"><span class="icon">🔌</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+            </article>
         </section>
+
         <footer class="footer">
-            <span>✦</span> <span data-footer-kz="Жерасты еңбегін таңдаған әрбір маманға құрметпен" data-footer-ru="С уважением к каждому, кто выбрал подземный труд" id="footerText">Жерасты еңбегін таңдаған әрбір маманға құрметпен</span> <span>✦</span>
+            <span>✦</span> <span id="footerText">Металды жасайтын әркімге құрметпен</span> <span>✦</span>
         </footer>
     </main>
+
+
+    <script>
+        (function () {
+            /**
+             * Графический ключ для открытия страницы.
+             *
+             * Сейчас правильный ключ задан как буква "М":
+             * 7 → 4 → 1 → 5 → 3 → 6 → 9
+             *
+             * Схема точек:
+             * 1 2 3
+             * 4 5 6
+             * 7 8 9
+             *
+             * Если нужен другой ключ — поменяйте значение ACCESS_PATTERN.
+             */
+            const ACCESS_PATTERN = '7415369';
+
+            const body = document.body;
+            const screen = document.getElementById('patternLockScreen');
+            const card = document.getElementById('patternLockCard');
+            const area = document.getElementById('patternArea');
+            const svg = document.getElementById('patternLines');
+            const message = document.getElementById('patternMessage');
+            const dots = Array.from(area.querySelectorAll('.pattern-dot'));
+
+            let isDrawing = false;
+            let selectedDots = [];
+            let previewLine = null;
+
+            body.classList.add('locked');
+
+            function placeDots() {
+                const size = area.clientWidth;
+                const positions = [
+                    [0.18, 0.18], [0.50, 0.18], [0.82, 0.18],
+                    [0.18, 0.50], [0.50, 0.50], [0.82, 0.50],
+                    [0.18, 0.82], [0.50, 0.82], [0.82, 0.82]
+                ];
+
+                dots.forEach((dot, index) => {
+                    dot.style.left = `${positions[index][0] * size}px`;
+                    dot.style.top = `${positions[index][1] * size}px`;
+                });
+            }
+
+            function getDotCenter(dot) {
+                const areaRect = area.getBoundingClientRect();
+                const dotRect = dot.getBoundingClientRect();
+
+                return {
+                    x: dotRect.left - areaRect.left + dotRect.width / 2,
+                    y: dotRect.top - areaRect.top + dotRect.height / 2
+                };
+            }
+
+            function createSvgLine(from, to, isPreview = false) {
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+
+                line.setAttribute('x1', String(from.x));
+                line.setAttribute('y1', String(from.y));
+                line.setAttribute('x2', String(to.x));
+                line.setAttribute('y2', String(to.y));
+                line.setAttribute('class', isPreview ? 'pattern-line preview' : 'pattern-line');
+
+                svg.appendChild(line);
+
+                return line;
+            }
+
+            function clearPattern() {
+                selectedDots = [];
+                svg.innerHTML = '';
+                previewLine = null;
+
+                dots.forEach(dot => dot.classList.remove('active'));
+            }
+
+            function resetWithError() {
+                message.textContent = 'Неверный ключ. Попробуйте ещё раз';
+                message.classList.add('error');
+
+                card.classList.remove('shake');
+                void card.offsetWidth;
+                card.classList.add('shake');
+
+                setTimeout(() => {
+                    clearPattern();
+                    message.textContent = 'Проведите пальцем по точкам';
+                    message.classList.remove('error');
+                }, 650);
+            }
+
+            function unlockPage() {
+                message.textContent = 'Доступ открыт';
+                screen.classList.add('hidden');
+
+                setTimeout(() => {
+                    body.classList.remove('locked');
+                    screen.remove();
+                }, 360);
+            }
+
+            function findTouchedDot(clientX, clientY) {
+                return dots.find(dot => {
+                    const rect = dot.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    const radius = rect.width * 0.72;
+                    const distance = Math.hypot(clientX - centerX, clientY - centerY);
+
+                    return distance <= radius;
+                });
+            }
+
+            function addDot(dot) {
+                if (!dot || selectedDots.includes(dot)) {
+                    return;
+                }
+
+                const previousDot = selectedDots[selectedDots.length - 1];
+
+                selectedDots.push(dot);
+                dot.classList.add('active');
+
+                if (previousDot) {
+                    createSvgLine(getDotCenter(previousDot), getDotCenter(dot));
+                }
+            }
+
+            function updatePreviewLine(clientX, clientY) {
+                if (!selectedDots.length) {
+                    return;
+                }
+
+                const areaRect = area.getBoundingClientRect();
+                const lastDot = selectedDots[selectedDots.length - 1];
+                const from = getDotCenter(lastDot);
+                const to = {
+                    x: clientX - areaRect.left,
+                    y: clientY - areaRect.top
+                };
+
+                if (!previewLine) {
+                    previewLine = createSvgLine(from, to, true);
+                    return;
+                }
+
+                previewLine.setAttribute('x1', String(from.x));
+                previewLine.setAttribute('y1', String(from.y));
+                previewLine.setAttribute('x2', String(to.x));
+                previewLine.setAttribute('y2', String(to.y));
+            }
+
+            function getPointer(event) {
+                const touch = event.touches && event.touches[0];
+
+                return {
+                    x: touch ? touch.clientX : event.clientX,
+                    y: touch ? touch.clientY : event.clientY
+                };
+            }
+
+            function startDrawing(event) {
+                event.preventDefault();
+                clearPattern();
+
+                isDrawing = true;
+                message.textContent = 'Рисуйте ключ';
+                message.classList.remove('error');
+
+                const pointer = getPointer(event);
+                addDot(findTouchedDot(pointer.x, pointer.y));
+                updatePreviewLine(pointer.x, pointer.y);
+            }
+
+            function moveDrawing(event) {
+                if (!isDrawing) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                const pointer = getPointer(event);
+                const dot = findTouchedDot(pointer.x, pointer.y);
+
+                if (dot) {
+                    addDot(dot);
+                }
+
+                updatePreviewLine(pointer.x, pointer.y);
+            }
+
+            function finishDrawing(event) {
+                if (!isDrawing) {
+                    return;
+                }
+
+                event.preventDefault();
+                isDrawing = false;
+
+                if (previewLine) {
+                    previewLine.remove();
+                    previewLine = null;
+                }
+
+                const enteredPattern = selectedDots
+                    .map(dot => dot.dataset.dot)
+                    .join('');
+
+                if (enteredPattern === ACCESS_PATTERN) {
+                    unlockPage();
+                } else {
+                    resetWithError();
+                }
+            }
+
+            window.addEventListener('resize', placeDots);
+
+            area.addEventListener('mousedown', startDrawing);
+            area.addEventListener('mousemove', moveDrawing);
+            window.addEventListener('mouseup', finishDrawing);
+
+            area.addEventListener('touchstart', startDrawing, { passive: false });
+            area.addEventListener('touchmove', moveDrawing, { passive: false });
+            area.addEventListener('touchend', finishDrawing, { passive: false });
+            area.addEventListener('touchcancel', finishDrawing, { passive: false });
+
+            placeDots();
+        })();
+    </script>
+
+
     <script>
         (function () {
             const langRu = document.getElementById('langRu');
@@ -783,27 +973,51 @@
             const subTitle = document.getElementById('subTitle');
             const footerText = document.getElementById('footerText');
             const cards = document.querySelectorAll('.card');
+
             const texts = {
                 ru: {
-                    main: 'С Днём <span class="accent">шахтёра</span>',
-                    sub: 'Профессии подземного горного производства',
+                    main: 'С Днём <span class="accent">металлурга</span>',
+                    sub: 'профессии, которые плавят будущее',
                     footer: 'С уважением к каждому, кто создаёт металл',
                     link: 'Перейти к форме'
                 },
                 kz: {
-                    main: 'Кенші <span class="accent">күнімен!</span>',
-                    sub: 'Жерасты тау-кен өндірісінің мамандықтары',
-                    footer: 'Жерасты еңбегін таңдаған әрбір маманға құрметпен',
+                    main: 'Металлург <span class="accent">күнімен!</span>',
+                    sub: 'Болашақты балқытатын мамандықтар',
+                    footer: 'Металды жасайтын әркімге құрметпен',
                     link: 'Формаға өту'
                 }
             };
-			
+
+            function decorateTitle(card, title) {
+                const id = card.dataset.id;
+
+                if (id === '1' && title.includes('Алтын')) {
+                    return 'Дробильщик <span class="highlight">Алтын</span>';
+                }
+
+                if (id === '5' || id === '6') {
+                    return title
+                        .replace('золотосодержащих руд', '<span class="highlight">золотосодержащих руд</span>')
+                        .replace('(сорбция золото)', '<br><span class="soft">(сорбция золото)</span>')
+                        .replace('(десорбция)', '<br><span class="soft">(десорбция)</span>');
+                }
+
+                if (id === '11-2') {
+                    return 'Плавильщик <span class="badge-practice">ПРАКТИКА</span>';
+                }
+
+                return title;
+            }
+
             function setLang(lang) {
                 langRu.classList.toggle('active', lang === 'ru');
                 langKz.classList.toggle('active', lang === 'kz');
+
                 mainTitle.innerHTML = texts[lang].main;
                 subTitle.textContent = texts[lang].sub;
                 footerText.textContent = texts[lang].footer;
+
                 cards.forEach(card => {
                     const titleEl = card.querySelector('.card-title');
                     const linkEl = card.querySelector('.card-link');
@@ -816,10 +1030,13 @@
                     if (href) linkEl.setAttribute('href', href);
                     if (linkTextEl) linkTextEl.textContent = texts[lang].link;
                 });
+
                 localStorage.setItem('altynLang', lang);
             }
+
             langRu.addEventListener('click', () => setLang('ru'));
             langKz.addEventListener('click', () => setLang('kz'));
+
             setLang(localStorage.getItem('altynLang') || 'kz');
         })();
     </script>
