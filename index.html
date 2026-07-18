@@ -1,682 +1,973 @@
 <!DOCTYPE html>
-<html lang="kk">
+<html lang="ru">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Алтын Шебер 2026 — Тау-кен мамандықтары</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&amp;display=swap" rel="stylesheet"/>
-<style>
-        /* ── Reset & Base ── */
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Алтын Шебер 2026</title>
+    <style>
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('fonts/Montserrat-Regular.ttf') format('truetype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('fonts/Montserrat-SemiBold.ttf') format('truetype');
+            font-weight: 600;
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('fonts/Montserrat-Bold.ttf') format('truetype');
+            font-weight: 700;
+        }
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('fonts/Montserrat-Black.ttf') format('truetype');
+            font-weight: 900;
+        }
+
+        :root {
+            --bg: #080b10;
+            --card: rgba(16, 22, 31, 0.92);
+            --card-border: rgba(212, 175, 55, 0.16);
+            --gold: #d4af37;
+            --gold-light: #f7df8a;
+            --text: #f0eee8;
+            --muted: rgba(255, 255, 255, 0.54);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        html {
+            min-height: 100%;
+            background: var(--bg);
+        }
+
         body {
-            font-family: 'Montserrat', sans-serif;
-            background: #0b0e14;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            padding: 2rem 1rem;
-            background-image:
-                radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.06) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 50%, rgba(212, 175, 55, 0.06) 0%, transparent 60%),
-                radial-gradient(ellipse at 50% 100%, rgba(180, 120, 30, 0.08) 0%, transparent 50%);
-            position: relative;
+            padding: 28px 16px 42px;
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12), transparent 34%),
+                radial-gradient(circle at 50% 100%, rgba(160, 95, 20, 0.13), transparent 38%),
+                linear-gradient(135deg, #07090d 0%, #10151d 45%, #07090d 100%);
             overflow-x: hidden;
         }
-        /* ── Glass-morphism gold bars background ── */
+
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             pointer-events: none;
             z-index: 0;
+            opacity: 0.52;
             background-image:
-                repeating-linear-gradient(45deg,
-                    transparent 0px,
-                    transparent 60px,
-                    rgba(212, 175, 55, 0.035) 60px,
-                    rgba(212, 175, 55, 0.035) 62px,
-                    transparent 62px,
-                    transparent 120px),
-                repeating-linear-gradient(-45deg,
-                    transparent 0px,
-                    transparent 60px,
-                    rgba(212, 175, 55, 0.025) 60px,
-                    rgba(212, 175, 55, 0.025) 62px,
-                    transparent 62px,
-                    transparent 120px),
-                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 30%),
-                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 30%),
-                radial-gradient(circle at 40% 60%, rgba(212, 175, 55, 0.04) 0%, transparent 40%);
-            background-size: 240px 240px, 240px 240px, 100% 100%, 100% 100%, 100% 100%;
-        }
-        /* gold ingot shapes with glass effect */
-        .gold-ingot {
-            position: fixed;
-            pointer-events: none;
-            z-index: 0;
-            border-radius: 8px;
-            background: rgba(212, 175, 55, 0.04);
-            border: 1px solid rgba(212, 175, 55, 0.06);
-            box-shadow: 0 0 60px rgba(212, 175, 55, 0.02);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            transform: rotate(12deg);
-        }
-        .gold-ingot::after {
-            content: '✦';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-12deg);
-            font-size: 1.2rem;
-            color: rgba(212, 175, 55, 0.08);
-        }
-        .gold-ingot:nth-child(1) {
-            width: 80px;
-            height: 30px;
-            top: 8%;
-            left: 2%;
-        }
-        .gold-ingot:nth-child(2) {
-            width: 120px;
-            height: 40px;
-            bottom: 12%;
-            right: 3%;
-            transform: rotate(-18deg);
-        }
-        .gold-ingot:nth-child(3) {
-            width: 60px;
-            height: 24px;
-            top: 30%;
-            right: 5%;
-            transform: rotate(25deg);
-        }
-        .gold-ingot:nth-child(4) {
-            width: 100px;
-            height: 34px;
-            bottom: 40%;
-            left: 1%;
-            transform: rotate(-8deg);
-        }
-        .gold-ingot:nth-child(5) {
-            width: 70px;
-            height: 28px;
-            top: 65%;
-            right: 2%;
-            transform: rotate(40deg);
-        }
-        .gold-ingot:nth-child(6) {
-            width: 90px;
-            height: 32px;
-            top: 12%;
-            left: 50%;
-            transform: translateX(-50%) rotate(-5deg);
-            opacity: 0.5;
+                repeating-linear-gradient(45deg, transparent 0 86px, rgba(212, 175, 55, 0.06) 87px, transparent 89px),
+                repeating-linear-gradient(-45deg, transparent 0 86px, rgba(212, 175, 55, 0.035) 87px, transparent 89px);
         }
 
-        /* ── Language Switcher ── */
-        .lang-switcher {
-            position: fixed;
-            top: 1.2rem;
-            right: 1.5rem;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(20, 20, 20, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 60px;
-            padding: 0.3rem 0.6rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-        }
-        .lang-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.2rem 0.3rem;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            opacity: 0.5;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.4);
-            font-family: 'Montserrat', sans-serif;
-        }
-        .lang-btn .flag {
-            font-size: 1.4rem;
-            line-height: 1;
-        }
-        .lang-btn.active {
-            opacity: 1;
-            background: rgba(212, 175, 55, 0.15);
-            padding: 0.2rem 0.6rem;
-            color: #d4af37;
-        }
-        .lang-btn:hover {
-            opacity: 0.8;
-        }
-
-        .lang-btn.active:hover {
-            opacity: 1;
-        }
-        .lang-divider {
-            color: rgba(212, 175, 55, 0.15);
-            font-size: 0.8rem;
-        }
-        /* ── Main Container ── */
-        .container {
-            max-width: 1400px;
-            width: 100%;
+        .app {
+            width: min(100%, 1400px);
+            margin: 0 auto;
             position: relative;
             z-index: 1;
+            opacity: 0;
+            transform: translateY(16px);
+            animation: pageIn 0.75s ease forwards;
+            animation-delay: 2.35s;
         }
 
-        /* ── Header ── */
-        .header {
-            text-align: center;
-            margin-bottom: 3.5rem;
-            position: relative;
-        }
-
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: -1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #d4af37, #f5d77b, #d4af37, transparent);
-            border-radius: 2px;
-        }
-
-        /* ── Badge with two logos vertically ── */
-        .header-badge {
-            display: inline-flex;
+        .intro {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.2rem;
-            background: linear-gradient(135deg, #1e1a12, #2d2416);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 60px;
-            padding: 0.8rem 2rem 0.6rem;
-            margin-bottom: 1.2rem;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.08);
-            backdrop-filter: blur(4px);
+            justify-content: center;
+            background:
+                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.18), transparent 35%),
+                #07090d;
+            animation: introOut 0.8s ease forwards;
+            animation-delay: 2.05s;
         }
 
-        /* Логотип и текст Алтыналмас (сверху) */
-        .logo-left {
-            display: inline-flex;
+        .intro-logo {
+            width: clamp(145px, 28vw, 245px);
+            height: auto;
+            filter: drop-shadow(0 0 28px rgba(212, 175, 55, 0.34));
+            animation: logoPulse 1.75s ease-in-out forwards;
+        }
+
+        .intro-title {
+            margin-top: 22px;
+            font-size: clamp(1.35rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: clamp(3px, 1vw, 8px);
+            color: var(--gold-light);
+            text-align: center;
+            text-shadow: 0 0 24px rgba(212, 175, 55, 0.32);
+            opacity: 0;
+            transform: translateY(10px);
+            animation: introTitleIn 0.7s ease forwards;
+            animation-delay: 0.75s;
+        }
+
+        .lang-switcher {
+            position: fixed !important;
+            top: 40px !important;
+            right: 14px !important;
+            z-index: 9999 !important;
+            display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 5px;
+            padding: 5px;
+            border: 1px solid rgba(212, 175, 55,0.18);
+            border-radius: 999px;
+            background: rgba(12, 13, 15, 0.64);
+            backdrop-filter: blur(14px);
+           -webkit-backdrop-filter: blur(14px);
+        }
+
+        .lang-btn {
+            min-width: 48px;
+            border: 0;
+            border-radius: 999px;
+            padding: 8px 10px;
+            font: 800 0.78rem 'Montserrat', Arial, sans-serif;
+            color: rgba(255, 255, 255, 0.48);
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .lang-btn.active {
+            color: #141006;
+            background: linear-gradient(180deg, var(--gold-light), var(--gold));
+            box-shadow: 0 0 18px rgba(212, 175, 55, 0.2);
+        }
+
+        .header {
+            padding-top: 8px;
+            margin-bottom: clamp(26px, 4vw, 54px);
+            text-align: center;
+        }
+
+        .header-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
         }
 
         .company-logo {
-            height: 40px;
-            width: auto;
-            display: inline-block;
+            width: clamp(88px, 12vw, 132px);
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.22));
+            animation: headerLogoIn 0.85s ease both;
+            animation-delay: 2.55s;
         }
 
-        .company-name {
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: #d4af37;
-            font-size: 1rem;
-        }
-
-        /* Алтын Шебер 2026 (снизу) */
         .event-name {
-            font-weight: 700;
-            letter-spacing: 3px;
-            font-size: 1.1rem;
-            background: linear-gradient(180deg, #f5e7b0, #d4af37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-top: 0.1rem;
+            margin-top: 12px;
+            font-size: clamp(1.05rem, 2vw, 1.65rem);
+            font-weight: 800;
+            letter-spacing: clamp(3px, 0.8vw, 7px);
+            color: var(--gold-light);
+            text-shadow: 0 0 22px rgba(212, 175, 55, 0.2);
         }
 
-        /* ── Main heading ── уменьшенный шрифт, одна строка ── */
         .header h1 {
-            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-size: clamp(2.1rem, 5vw, 4.4rem);
+            line-height: 1.1;
             font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(180deg, #f5e7b0 0%, #d4af37 45%, #b8932a 70%, #8a6f1f 100%);
+            letter-spacing: 1px;
+            background: linear-gradient(180deg, #fff0ad 0%, #d4af37 44%, #9d7620 100%);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 60px rgba(212, 175, 55, 0.15);
-            line-height: 1.2;
-            margin-top: 0.2rem;
+            -webkit-text-fill-color: transparent;
         }
 
         .header h1 .accent {
-            font-weight: 300;
-            letter-spacing: 4px;
-            background: linear-gradient(180deg, #c0b0a0, #a09080);
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            background: linear-gradient(180deg, #ded1b4, #a5967a);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .header p {
-            margin-top: 0.8rem;
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: 400;
-            letter-spacing: 1px;
+            margin-top: 12px;
+            color: var(--muted);
+            font-size: clamp(0.95rem, 1.6vw, 1.3rem);
+            font-weight: 600;
         }
 
-        /* ── Grid ── 4 колонки на широких экранах ── */
+        .header-line {
+            width: min(180px, 46vw);
+            height: 3px;
+            margin: 18px auto 0;
+            border-radius: 999px;
+            background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+            opacity: 0.7;
+        }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: clamp(14px, 2vw, 22px);
         }
 
-        /* ── Card ── */
         .card {
-            background: linear-gradient(145deg, #151a22, #0d1118);
-            border-radius: 18px;
-            padding: 1.6rem 1.8rem 1.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(212, 175, 55, 0.04);
-            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
+            min-width: 0;
+            min-height: 230px;
+            padding: 26px;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(255, 255, 255, 0.045);
+            border-radius: 22px;
+            background: linear-gradient(145deg, rgba(18, 24, 34, 0.95), rgba(10, 14, 20, 0.96));
+            box-shadow:
+                0 18px 55px rgba(0, 0, 0, 0.36),
+                inset 0 0 0 1px rgba(212, 175, 55, 0.045);
+            overflow: hidden;
+            position: relative;
+            transform: translateY(18px);
+            opacity: 0;
+            animation: cardIn 0.62s ease forwards;
         }
 
         .card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #d4af37, #f5d77b, #d4af37, transparent);
+            inset: 0;
             opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(212, 175, 55, 0.2);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.8), 0 0 40px rgba(212, 175, 55, 0.04);
+            background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.14), transparent 42%);
+            transition: opacity 0.3s ease;
         }
 
         .card:hover::before {
             opacity: 1;
         }
 
-        .card::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(212, 175, 55, 0.02), transparent 60%);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-
-        .card:hover::after {
-            opacity: 1;
-        }
-
         .card-number {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: rgba(212, 175, 55, 0.35);
-            text-transform: uppercase;
-            margin-bottom: 0.3rem;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 18px;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: rgba(212, 175, 55, 0.42);
         }
 
         .card-title {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #e8e4dc;
-            line-height: 1.4;
-            margin-bottom: 1rem;
-            flex: 1;
-            letter-spacing: 0.2px;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            margin: auto 0 24px;
+            color: #f1eee8;
+            font-size: clamp(0.96rem, 1.35vw, 1.12rem);
+            line-height: 1.45;
+            font-weight: 800;
+            text-align: center;
+            overflow-wrap: anywhere;
+            word-break: normal;
+            hyphens: auto;
         }
 
-        .card-title .highlight {
-            color: #d4af37;
-        }
-
-        .card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.6rem 1.4rem;
-            background: linear-gradient(135deg, #1e1a12, #2d2416);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 60px;
-            color: #d4af37;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-            align-self: flex-start;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .card-link .icon {
-            display: inline-flex;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .card-link:hover {
-            background: linear-gradient(135deg, #2d2416, #3f311f);
-            border-color: rgba(212, 175, 55, 0.4);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.08), 0 4px 16px rgba(0, 0, 0, 0.4);
-            transform: scale(1.02);
-        }
-
-        .card-link:hover .icon {
-            transform: translateX(4px) scale(1.1);
-        }
-
-        .card-link:active {
-            transform: scale(0.97);
+        .card-title .highlight,
+        .card-title .soft {
+            color: var(--gold);
         }
 
         .badge-practice {
-            display: inline-block;
-            font-size: 0.55rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #b8932a;
+            display: inline-flex;
+            margin-top: 7px;
+            padding: 3px 11px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 999px;
+            color: var(--gold);
             background: rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 30px;
-            padding: 0.15rem 0.8rem;
-            margin-left: 0.4rem;
-            vertical-align: middle;
+            font-size: 0.68rem;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .card-link {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            min-height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 13px 16px;
+            border: 1px solid rgba(212, 175, 55, 0.28);
+            border-radius: 999px;
+            color: var(--gold-light);
+            background: linear-gradient(135deg, rgba(52, 37, 16, 0.96), rgba(33, 25, 15, 0.98));
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 900;
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .card-link .icon {
+            flex: 0 0 auto;
+            font-size: 1.14rem;
+            line-height: 1;
+        }
+
+        .card-link:hover,
+        .card-link:active {
+            transform: translateY(-2px);
+            border-color: rgba(247, 223, 138, 0.5);
+            box-shadow: 0 0 24px rgba(212, 175, 55, 0.16);
         }
 
         .footer {
-            margin-top: 4rem;
+            margin-top: 42px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(255, 255, 255, 0.055);
             text-align: center;
-            color: rgba(255, 255, 255, 0.15);
-            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.24);
+            font-size: 0.78rem;
             letter-spacing: 2px;
-            font-weight: 400;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            padding-top: 2rem;
         }
 
         .footer span {
-            color: rgba(212, 175, 55, 0.25);
+            color: rgba(212, 175, 55, 0.35);
         }
 
-        /* ── Адаптивность для 4-колоночной сетки ── */
-        @media (max-width: 1200px) {
-            .grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+        .gold-ingot {
+            position: fixed;
+            z-index: 0;
+            width: 96px;
+            height: 36px;
+            border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.08);
+            background: rgba(212, 175, 55, 0.035);
+            pointer-events: none;
+            transform: rotate(14deg);
         }
 
-        @media (max-width: 900px) {
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.2rem;
-            }
+        .gold-ingot::after {
+            content: '✦';
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            color: rgba(212, 175, 55, 0.12);
+        }
+
+        .gold-ingot:nth-of-type(1) { top: 62px; left: 2%; }
+        .gold-ingot:nth-of-type(2) { top: 28%; right: 3%; transform: rotate(-20deg); }
+        .gold-ingot:nth-of-type(3) { bottom: 22%; left: 1%; transform: rotate(-8deg); }
+        .gold-ingot:nth-of-type(4) { bottom: 12%; right: 4%; transform: rotate(20deg); }
+
+        @keyframes logoPulse {
+            0% { opacity: 0; transform: scale(0.72); }
+            35% { opacity: 1; transform: scale(1.08); }
+            72% { opacity: 1; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.08); }
+        }
+
+        @keyframes introTitleIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes introOut {
+            to { opacity: 0; visibility: hidden; pointer-events: none; }
+        }
+
+        @keyframes pageIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes headerLogoIn {
+            from { opacity: 0; transform: scale(1.25); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes cardIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card:nth-child(1) { animation-delay: 2.55s; }
+        .card:nth-child(2) { animation-delay: 2.62s; }
+        .card:nth-child(3) { animation-delay: 2.69s; }
+        .card:nth-child(4) { animation-delay: 2.76s; }
+        .card:nth-child(5) { animation-delay: 2.83s; }
+        .card:nth-child(6) { animation-delay: 2.90s; }
+        .card:nth-child(7) { animation-delay: 2.97s; }
+        .card:nth-child(8) { animation-delay: 3.04s; }
+        .card:nth-child(9) { animation-delay: 3.11s; }
+        .card:nth-child(10) { animation-delay: 3.18s; }
+        .card:nth-child(11) { animation-delay: 3.25s; }
+        .card:nth-child(12) { animation-delay: 3.32s; }
+        .card:nth-child(13) { animation-delay: 3.39s; }
+
+        @media (max-width: 1180px) {
+            .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+
+        @media (max-width: 860px) {
+            body { padding: 72px 12px 32px; }
+            .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .card { min-height: 215px; padding: 22px; }
+        }
+
+        @media (max-width: 560px) {
+            body { padding: 72px 10px 28px; }
+            .lang-switcher { top: 10px; right: 10px; }
+            .lang-btn { min-width: 42px; padding: 7px 8px; font-size: 0.72rem; }
+            .grid { grid-template-columns: 1fr; gap: 13px; }
             .card {
-                padding: 1.3rem 1.4rem 1.5rem;
+                min-height: 0;
+                padding: 20px;
+                border-radius: 18px;
             }
+            .card-number { margin-bottom: 12px; }
             .card-title {
-                font-size: 0.95rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .header h1 {
-                font-size: clamp(1.5rem, 5vw, 2.2rem);
-            }
-            .header-badge {
-                padding: 0.6rem 1.2rem 0.4rem;
-                border-radius: 40px;
-            }
-            .company-logo {
-                height: 32px;
-            }
-            .company-name {
-                font-size: 0.85rem;
-            }
-            .event-name {
-                font-size: 0.95rem;
-                letter-spacing: 2px;
-            }
-            body {
-                padding: 1.2rem 0.8rem;
-            }
-            .lang-switcher {
-                top: 0.8rem;
-                right: 0.8rem;
-                padding: 0.2rem 0.4rem;
-            }
-            .lang-btn {
-                font-size: 0.65rem;
-            }
-            .lang-btn .flag {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .card-link {
-                font-size: 0.7rem;
-                padding: 0.5rem 1rem;
-            }
-            .card-title {
-                font-size: 0.85rem;
-            }
-        }
-
-        /* ── Print ── */
-        @media print {
-            body {
-                background: #fff;
-                padding: 0.5in;
-            }
-            .card {
-                border: 1px solid #ccc;
-                box-shadow: none;
-                background: #fafafa;
-            }
-            .card-title {
-                color: #222;
+                margin-bottom: 18px;
+                font-size: 1rem;
             }
             .card-link {
-                color: #b8932a;
-                border-color: #b8932a;
-                background: transparent;
+                min-height: 52px;
+                font-size: 0.9rem;
             }
-            .header h1,
-            .header-badge .event-name {
-                -webkit-text-fill-color: #b8932a;
-                color: #b8932a;
+            .header { margin-bottom: 26px; }
+            .company-logo { width: 92px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
-            .header-badge {
-                background: transparent;
-                border-color: #b8932a;
-                color: #b8932a;
+            .intro { display: none; }
+            .app, .card { opacity: 1; transform: none; }
+        }
+
+        /* ===== ГРАФИЧЕСКИЙ КЛЮЧ ДОСТУПА ===== */
+        body.locked {
+            overflow: hidden;
+        }
+
+        body.locked .app,
+        body.locked .lang-switcher,
+        body.locked .intro,
+        body.locked .gold-ingot {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+
+        .pattern-lock-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 5000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background:
+                radial-gradient(circle at 50% 18%, rgba(212, 175, 55, 0.18), transparent 34%),
+                radial-gradient(circle at 50% 90%, rgba(160, 95, 20, 0.14), transparent 38%),
+                linear-gradient(135deg, #07090d 0%, #10151d 48%, #07090d 100%);
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+
+        .pattern-lock-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .pattern-lock-card {
+            width: min(100%, 430px);
+            padding: 30px 24px 28px;
+            border: 1px solid rgba(212, 175, 55, 0.22);
+            border-radius: 28px;
+            background: linear-gradient(145deg, rgba(18, 24, 34, 0.96), rgba(8, 12, 18, 0.98));
+            box-shadow:
+                0 28px 80px rgba(0, 0, 0, 0.54),
+                inset 0 0 0 1px rgba(212, 175, 55, 0.05);
+            text-align: center;
+        }
+
+        .pattern-lock-logo {
+            width: 86px;
+            height: auto;
+            margin-bottom: 18px;
+            filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.28));
+        }
+
+        .pattern-lock-title {
+            margin-bottom: 8px;
+            color: var(--gold-light);
+            font-size: 1.28rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .pattern-lock-subtitle {
+            margin-bottom: 22px;
+            color: rgba(255, 255, 255, 0.56);
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.45;
+        }
+
+        .pattern-area {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            max-width: 76vw;
+            max-height: 76vw;
+            margin: 0 auto 18px;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .pattern-lines {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            pointer-events: none;
+        }
+
+        .pattern-line {
+            stroke: var(--gold);
+            stroke-width: 7;
+            stroke-linecap: round;
+            opacity: 0.86;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
+        }
+
+        .pattern-line.preview {
+            opacity: 0.5;
+        }
+
+        .pattern-dot {
+            position: absolute;
+            width: 62px;
+            height: 62px;
+            margin: -31px 0 0 -31px;
+            border: 2px solid rgba(212, 175, 55, 0.34);
+            border-radius: 50%;
+            background:
+                radial-gradient(circle, rgba(247, 223, 138, 0.22) 0 18%, rgba(212, 175, 55, 0.08) 19% 44%, rgba(255, 255, 255, 0.025) 45% 100%);
+            box-shadow: inset 0 0 18px rgba(212, 175, 55, 0.08);
+            transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+        }
+
+        .pattern-dot.active {
+            transform: scale(1.08);
+            border-color: rgba(247, 223, 138, 0.95);
+            background:
+                radial-gradient(circle, var(--gold-light) 0 18%, rgba(212, 175, 55, 0.44) 19% 48%, rgba(212, 175, 55, 0.12) 49% 100%);
+            box-shadow:
+                0 0 22px rgba(212, 175, 55, 0.34),
+                inset 0 0 18px rgba(247, 223, 138, 0.16);
+        }
+
+        .pattern-message {
+            min-height: 22px;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 0.86rem;
+            font-weight: 700;
+        }
+
+        .pattern-message.error {
+            color: #ff8b8b;
+        }
+
+        .pattern-lock-card.shake {
+            animation: patternShake 0.35s ease;
+        }
+
+        @keyframes patternShake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-9px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-6px); }
+            80% { transform: translateX(5px); }
+        }
+
+        @media (max-width: 420px) {
+            .pattern-lock-card {
+                padding: 26px 18px 24px;
+                border-radius: 22px;
             }
-            .header p {
-                color: #666;
+
+            .pattern-area {
+                width: 270px;
+                height: 270px;
             }
-            .header::after {
-                background: #b8932a;
-            }
-            .card-number {
-                color: #999;
-            }
-            .footer {
-                color: #999;
-                border-top-color: #ddd;
-            }
-            .lang-switcher {
-                display: none;
-            }
-            .gold-ingot {
-                display: none;
-            }
-            body::before {
-                display: none;
+
+            .pattern-dot {
+                width: 56px;
+                height: 56px;
+                margin: -28px 0 0 -28px;
             }
         }
+
     </style>
 </head>
 <body>
-<!-- ─── Gold ingots (glass effect) ─── -->
-<div class="gold-ingot"></div>
-<div class="gold-ingot"></div>
-<div class="gold-ingot"></div>
-<div class="gold-ingot"></div>
-<div class="gold-ingot"></div>
-<div class="gold-ingot"></div>
-<!-- ─── Language Switcher ─── -->
-<div class="lang-switcher" id="langSwitcher">
-<button class="lang-btn active" data-lang="ru" id="langRu">
-<span class="flag">🇷🇺</span> RU
-        </button>
-<span class="lang-divider">|</span>
-<button class="lang-btn" data-lang="kz" id="langKz">
-<span class="flag">🇰🇿</span> KZ
-        </button>
-</div>
-<div class="container">
-<!-- ─── HEADER ─── -->
-<header class="header">
-<!-- Бейдж с вертикальным расположением логотипов -->
-<div class="header-badge">
-<!-- Верхняя часть: Алтыналмас -->
-<span class="logo-left">
-<!-- ★ СЮДА ВСТАВЬТЕ СВОЙ ЛОГОТИП ★ -->
-<!-- замените src="altyn.png" на путь к вашему файлу -->
-<img alt="Алтыналмас" class="company-logo" src="altyn.png"/>
-<span class="company-name">Алтыналмас</span>
-</span>
-<!-- Нижняя часть: Алтын Шебер 2026 -->
-<span class="event-name">Алтын Шебер 2026</span>
-</div>
-<h1 id="mainTitle">Кенші <span class="accent">күнімен!</span></h1>
-<p id="subTitle">Жерасты тау-кен өндірісінің мамандықтары</p>
-</header>
-<!-- ─── GRID ─── -->
-<div class="grid" id="cardsGrid"><div class="card" data-id="1">
-<div class="card-number">№ 01</div>
-<div class="card-title" data-title-kz="Взрывник" data-title-ru="Взрывник">Взрывник</div>
-<a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/MR6F4t1Y1N" data-href-ru="https://forms.cloud.microsoft/r/WzKAWKZ018" href="https://forms.cloud.microsoft/r/MR6F4t1Y1N" rel="noopener noreferrer" target="_blank">
-<span class="icon">💥</span>
-<span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span>
-</a>
-</div><div class="card" data-id="2">
-<div class="card-number">№ 02</div>
-<div class="card-title" data-title-kz="Крепильщик" data-title-ru="Крепильщик">Крепильщик</div>
-<a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/46uzd2ZKCX" data-href-ru="https://forms.cloud.microsoft/r/xN2xw2suYM" href="https://forms.cloud.microsoft/r/46uzd2ZKCX" rel="noopener noreferrer" target="_blank">
-<span class="icon">🛠</span>
-<span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span>
-</a>
-</div><div class="card" data-id="3">
-<div class="card-number">№ 03</div>
-<div class="card-title" data-title-kz="Машинист буровой установки" data-title-ru="Машинист буровой установки">Машинист буровой установки</div>
-<a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/s9MSP9bnpq" data-href-ru="https://forms.cloud.microsoft/r/CJxr2fcUqc" href="https://forms.cloud.microsoft/r/s9MSP9bnpq" rel="noopener noreferrer" target="_blank">
-<span class="icon">⛏</span>
-<span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span>
-</a>
-</div><div class="card" data-id="4">
-<div class="card-number">№ 04</div>
-<div class="card-title" data-title-kz="Машинист погрузочно-доставочной машины" data-title-ru="Машинист погрузочно-доставочной машины">Машинист погрузочно-доставочной машины</div>
-<a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/sNddWUdQv3" data-href-ru="https://forms.cloud.microsoft/r/632uX8ABQX" href="https://forms.cloud.microsoft/r/sNddWUdQv3" rel="noopener noreferrer" target="_blank">
-<span class="icon">🚜</span>
-<span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span>
-</a>
-</div><div class="card" data-id="5">
-<div class="card-number">№ 05</div>
-<div class="card-title" data-title-kz="Машинист погрузочной машины" data-title-ru="Машинист погрузочной машины">Машинист погрузочной машины</div>
-<a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/ar3a0AarFu" data-href-ru="https://forms.cloud.microsoft/r/7FY0cY3YB9" href="https://forms.cloud.microsoft/r/ar3a0AarFu" rel="noopener noreferrer" target="_blank">
-<span class="icon">⚙</span>
-<span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span>
-</a>
-</div><div class="card" data-id="6">
-<div class="card-number">№ 06</div>
-<div class="card-title" data-title-kz="Проходчик" data-title-ru="Проходчик">Проходчик</div>
-<a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/9RHZNC9FkB" data-href-ru="https://forms.cloud.microsoft/r/vw2pKfgn46" href="https://forms.cloud.microsoft/r/9RHZNC9FkB" rel="noopener noreferrer" target="_blank">
-<span class="icon">⛏</span>
-<span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span>
-</a>
-</div><div class="card" data-id="7">
-<div class="card-number">№ 07</div>
-<div class="card-title" data-title-kz="Машинист подземных самоходных машин" data-title-ru="Машинист подземных самоходных машин">Машинист подземных самоходных машин</div>
-<a class="card-link" data-href-kz="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=mDimTfCCv0SYJnh9UFjNgB2uBGmSrR9LofuMfTqkbcBUMDJVQkw1S0hESFNKS1VBR0E0NjBORUdNQiQlQCNjPTEkJUAjdD1n" data-href-ru="https://forms.cloud.microsoft/r/LMqYDjS6wf" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=mDimTfCCv0SYJnh9UFjNgB2uBGmSrR9LofuMfTqkbcBUMDJVQkw1S0hESFNKS1VBR0E0NjBORUdNQiQlQCNjPTEkJUAjdD1n" rel="noopener noreferrer" target="_blank">
-<span class="icon">🚧</span>
-<span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span>
-</a>
-</div><div class="card" data-id="8">
-<div class="card-number">№ 08</div>
-<div class="card-title" data-title-kz="Слесарь по обслуживанию и ремонту оборудования" data-title-ru="Слесарь по обслуживанию и ремонту оборудования">Слесарь по обслуживанию и ремонту оборудования</div>
-<a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/QWVQCW1Qba" data-href-ru="https://forms.cloud.microsoft/r/LJ0pU7zETT" href="https://forms.cloud.microsoft/r/QWVQCW1Qba" rel="noopener noreferrer" target="_blank">
-<span class="icon">🔧</span>
-<span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span>
-</a>
-</div><div class="card" data-id="9">
-<div class="card-number">№ 09</div>
-<div class="card-title" data-title-kz="Стволовой" data-title-ru="Стволовой">Стволовой</div>
-<a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/gw6Wf5cUMB" data-href-ru="https://forms.cloud.microsoft/r/px6H2Eab8w" href="https://forms.cloud.microsoft/r/gw6Wf5cUMB" rel="noopener noreferrer" target="_blank">
-<span class="icon">🪝</span>
-<span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span>
-</a>
-</div><div class="card" data-id="10">
-<div class="card-number">№ 10</div>
-<div class="card-title" data-title-kz="Электрогазосварщик" data-title-ru="Электрогазосварщик">Электрогазосварщик</div>
-<a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/jdbEu9swA4" data-href-ru="https://forms.cloud.microsoft/r/m8MxLWx1Fw" href="https://forms.cloud.microsoft/r/jdbEu9swA4" rel="noopener noreferrer" target="_blank">
-<span class="icon">⚡</span>
-<span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span>
-</a>
-</div><div class="card" data-id="11">
-<div class="card-number">№ 11</div>
-<div class="card-title" data-title-kz="Электрослесарь по обслуживанию и ремонту оборудования" data-title-ru="Электрослесарь по обслуживанию и ремонту оборудования">Электрослесарь по обслуживанию и ремонту оборудования</div>
-<a class="card-link" data-href-kz="https://forms.cloud.microsoft/r/unjBHRHJ37" data-href-ru="https://forms.cloud.microsoft/r/7jNsgWx3sP" href="https://forms.cloud.microsoft/r/unjBHRHJ37" rel="noopener noreferrer" target="_blank">
-<span class="icon">🔌</span>
-<span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span>
-</a>
-</div></div>
-<!-- ─── FOOTER ─── -->
-<div class="footer">
-<span>✦</span> <span data-footer-kz="Жерасты еңбегін таңдаған әрбір маманға құрметпен" data-footer-ru="С уважением к каждому, кто выбрал подземный труд" id="footerText">Жерасты еңбегін таңдаған әрбір маманға құрметпен</span> <span>✦</span>
-</div>
-</div>
-<script>
-        (function() {
+    <div class="intro" id="intro">
+        <img src="altyn.png" alt="Алтыналмас" class="intro-logo" />
+        <div class="intro-title">Алтын Шебер 2026</div>
+    </div>
+
+    <div class="gold-ingot"></div>
+    <div class="gold-ingot"></div>
+    <div class="gold-ingot"></div>
+    <div class="gold-ingot"></div>
+
+    <div class="lang-switcher" id="langSwitcher" aria-label="Выбор языка">
+        <button class="lang-btn" type="button" data-lang="ru" id="langRu">RU</button>
+        <button class="lang-btn active" type="button" data-lang="kz" id="langKz">KZ</button>
+    </div>
+
+    <main class="app">
+        <header class="header">
+            <div class="header-logo">
+                <img src="altyn.png" alt="Алтыналмас" class="company-logo" />
+                <div class="event-name">Алтын Шебер 2026</div>
+            </div>
+
+            <h1 id="mainTitle">Кенші<span class="accent">күнімен!</span></h1>
+            <p id="subTitle">Жерасты тау-кен өндірісінің мамандықтары</p>
+            <div class="header-line"></div>
+        </header>
+
+        <section class="grid" id="cardsGrid" aria-label="Список профессий">
+            <article class="card" data-id="1">
+                <div class="card-number">№ 01</div>
+                <div class="card-title" data-title-kz="Взрывник" data-title-ru="Взрывник Алтын">Взрывник</div>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/MR6F4t1Y1N" data-href-kz="https://forms.cloud.microsoft/r/WzKAWKZ018" data-href-ru="https://forms.cloud.microsoft/r/MR6F4t1Y1N"><span class="icon">💥</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+            </article>
+
+            <article class="card" data-id="2">
+                <div class="card-number">№ 02</div>
+                <div class="card-title" data-title-kz="Крепильщик" data-title-ru="Крепильщик">Крепильщик</div>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/46uzd2ZKCX" data-href-kz="https://forms.cloud.microsoft/r/xN2xw2suYM" data-href-ru="https://forms.cloud.microsoft/r/46uzd2ZKCX"><span class="icon">🛠</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+            </article>
+
+            <article class="card" data-id="3">
+                <div class="card-number">№ 03</div>
+                <div class="card-title" data-title-kz="Машинист буровой установки" data-title-ru="Машинист буровой установки">Машинист буровой установки</div>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/s9MSP9bnpq" data-href-kz="https://forms.cloud.microsoft/r/CJxr2fcUqc" data-href-ru="https://forms.cloud.microsoft/r/s9MSP9bnpq"><span class="icon">⛏</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+            </article>
+
+            <article class="card" data-id="4">
+                <div class="card-number">№ 04</div>
+                <div class="card-title" data-title-kz="Машинист погрузочно-доставочной машины" data-title-ru="Машинист погрузочно-доставочной машины">Машинист погрузочно-доставочной машины</div>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/sNddWUdQv3" data-href-kz="https://forms.cloud.microsoft/r/632uX8ABQX" data-href-ru="https://forms.cloud.microsoft/r/sNddWUdQv3"><span class="icon">🚜</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+            </article>
+
+            <article class="card" data-id="5">
+                <div class="card-number">№ 05</div>
+                <div class="card-title" data-title-kz="Машинист погрузочной машины" data-title-ru="Машинист погрузочной машины">Машинист погрузочной машины</div>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/ar3a0AarFu" data-href-kz="https://forms.cloud.microsoft/r/7FY0cY3YB9" data-href-ru="https://forms.cloud.microsoft/r/ar3a0AarFu"><span class="icon">⚙</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+            </article>
+
+            <article class="card" data-id="6">
+                <div class="card-number">№ 06</div>
+                <div class="card-title" data-title-kz="Проходчик" data-title-ru="Проходчик">Проходчик</div>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/9RHZNC9FkB" data-href-kz="https://forms.cloud.microsoft/r/vw2pKfgn46" data-href-ru="https://forms.cloud.microsoft/r/9RHZNC9FkB"><span class="icon">⛏</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+            </article>
+
+            <article class="card" data-id="7">
+                <div class="card-number">№ 07</div>
+                <div class="card-title" data-title-kz="Машинист подземных самоходных машин" data-title-ru="Машинист подземных самоходных машин">Машинист подземных самоходных машин</div>
+                <a class="card-link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=mDimTfCCv0SYJnh9UFjNgB2uBGmSrR9LofuMfTqkbcBUMDJVQkw1S0hESFNKS1VBR0E0NjBORUdNQiQlQCNjPTEkJUAjdD1n" data-href-kz="https://forms.cloud.microsoft/r/LMqYDjS6wf" data-href-ru="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=mDimTfCCv0SYJnh9UFjNgB2uBGmSrR9LofuMfTqkbcBUMDJVQkw1S0hESFNKS1VBR0E0NjBORUdNQiQlQCNjPTEkJUAjdD1n"><span class="icon">🚧</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+            </article>
+
+            <article class="card" data-id="8">
+                <div class="card-number">№ 08</div>
+                <div class="card-title" data-title-kz="Слесарь по обслуживанию и ремонту оборудования" data-title-ru="Слесарь по обслуживанию и ремонту оборудования">Слесарь по обслуживанию и ремонту оборудования</div>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/QWVQCW1Qba" data-href-kz="https://forms.cloud.microsoft/r/LJ0pU7zETT" data-href-ru="https://forms.cloud.microsoft/r/QWVQCW1Qba"><span class="icon">🔧</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+            </article>
+
+            <article class="card" data-id="9">
+                <div class="card-number">№ 09</div>
+                <div class="card-title" data-title-kz="Стволовой" data-title-ru="Стволовой">Стволовой</div>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/gw6Wf5cUMB" data-href-kz="https://forms.cloud.microsoft/r/px6H2Eab8w" data-href-ru="https://forms.cloud.microsoft/r/gw6Wf5cUMB"><span class="icon">🪝</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+            </article>
+
+            <article class="card" data-id="10">
+                <div class="card-number">№ 10</div>
+                <div class="card-title" data-title-kz="Электрогазосварщик" data-title-ru="Электрогазосварщик">Электрогазосварщик</div>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/jdbEu9swA4" data-href-kz="https://forms.cloud.microsoft/r/m8MxLWx1Fw" data-href-ru="https://forms.cloud.microsoft/r/jdbEu9swA4"><span class="icon">⚡</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+            </article>
+
+            <article class="card" data-id="11">
+                <div class="card-number">№ 11</div>
+                <div class="card-title" data-title-kz="Электрослесарь по обслуживанию и ремонту оборудования" data-title-ru="Электрослесарь по обслуживанию и ремонту оборудования">Электрослесарь по обслуживанию и ремонту оборудования</div>
+                <a class="card-link" href="https://forms.cloud.microsoft/r/unjBHRHJ37" data-href-kz="https://forms.cloud.microsoft/r/7jNsgWx3sP" data-href-ru="https://forms.cloud.microsoft/r/unjBHRHJ37"><span class="icon">🔌</span><span class="link-text" data-link-kz="Формаға өту" data-link-ru="Перейти к форме">Формаға өту</span></a>
+            </article>
+			
+        </section>
+
+        <footer class="footer">
+            <span>✦</span> <span data-footer-kz="Жерасты еңбегін таңдаған әрбір маманға құрметпен" data-footer-ru="С уважением к каждому, кто выбрал подземный труд" id="footerText">Жерасты еңбегін таңдаған әрбір маманға құрметпен</span> <span>✦</span>
+        </footer>
+    </main>
+
+
+    <script>
+        (function () {
+            /**
+             * Графический ключ для открытия страницы.
+             *
+             * Сейчас правильный ключ задан как буква "М":
+             * 7 → 4 → 1 → 5 → 3 → 6 → 9
+             *
+             * Схема точек:
+             * 1 2 3
+             * 4 5 6
+             * 7 8 9
+             *
+             * Если нужен другой ключ — поменяйте значение ACCESS_PATTERN.
+             */
+            const ACCESS_PATTERN = '7415369';
+
+            const body = document.body;
+            const screen = document.getElementById('patternLockScreen');
+            const card = document.getElementById('patternLockCard');
+            const area = document.getElementById('patternArea');
+            const svg = document.getElementById('patternLines');
+            const message = document.getElementById('patternMessage');
+            const dots = Array.from(area.querySelectorAll('.pattern-dot'));
+
+            let isDrawing = false;
+            let selectedDots = [];
+            let previewLine = null;
+
+            body.classList.add('locked');
+
+            function placeDots() {
+                const size = area.clientWidth;
+                const positions = [
+                    [0.18, 0.18], [0.50, 0.18], [0.82, 0.18],
+                    [0.18, 0.50], [0.50, 0.50], [0.82, 0.50],
+                    [0.18, 0.82], [0.50, 0.82], [0.82, 0.82]
+                ];
+
+                dots.forEach((dot, index) => {
+                    dot.style.left = `${positions[index][0] * size}px`;
+                    dot.style.top = `${positions[index][1] * size}px`;
+                });
+            }
+
+            function getDotCenter(dot) {
+                const areaRect = area.getBoundingClientRect();
+                const dotRect = dot.getBoundingClientRect();
+
+                return {
+                    x: dotRect.left - areaRect.left + dotRect.width / 2,
+                    y: dotRect.top - areaRect.top + dotRect.height / 2
+                };
+            }
+
+            function createSvgLine(from, to, isPreview = false) {
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+
+                line.setAttribute('x1', String(from.x));
+                line.setAttribute('y1', String(from.y));
+                line.setAttribute('x2', String(to.x));
+                line.setAttribute('y2', String(to.y));
+                line.setAttribute('class', isPreview ? 'pattern-line preview' : 'pattern-line');
+
+                svg.appendChild(line);
+
+                return line;
+            }
+
+            function clearPattern() {
+                selectedDots = [];
+                svg.innerHTML = '';
+                previewLine = null;
+
+                dots.forEach(dot => dot.classList.remove('active'));
+            }
+
+            function resetWithError() {
+                message.textContent = 'Неверный ключ. Попробуйте ещё раз';
+                message.classList.add('error');
+
+                card.classList.remove('shake');
+                void card.offsetWidth;
+                card.classList.add('shake');
+
+                setTimeout(() => {
+                    clearPattern();
+                    message.textContent = 'Проведите пальцем по точкам';
+                    message.classList.remove('error');
+                }, 650);
+            }
+
+            function unlockPage() {
+                message.textContent = 'Доступ открыт';
+                screen.classList.add('hidden');
+
+                setTimeout(() => {
+                    body.classList.remove('locked');
+                    screen.remove();
+                }, 360);
+            }
+
+            function findTouchedDot(clientX, clientY) {
+                return dots.find(dot => {
+                    const rect = dot.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    const radius = rect.width * 0.72;
+                    const distance = Math.hypot(clientX - centerX, clientY - centerY);
+
+                    return distance <= radius;
+                });
+            }
+
+            function addDot(dot) {
+                if (!dot || selectedDots.includes(dot)) {
+                    return;
+                }
+
+                const previousDot = selectedDots[selectedDots.length - 1];
+
+                selectedDots.push(dot);
+                dot.classList.add('active');
+
+                if (previousDot) {
+                    createSvgLine(getDotCenter(previousDot), getDotCenter(dot));
+                }
+            }
+
+            function updatePreviewLine(clientX, clientY) {
+                if (!selectedDots.length) {
+                    return;
+                }
+
+                const areaRect = area.getBoundingClientRect();
+                const lastDot = selectedDots[selectedDots.length - 1];
+                const from = getDotCenter(lastDot);
+                const to = {
+                    x: clientX - areaRect.left,
+                    y: clientY - areaRect.top
+                };
+
+                if (!previewLine) {
+                    previewLine = createSvgLine(from, to, true);
+                    return;
+                }
+
+                previewLine.setAttribute('x1', String(from.x));
+                previewLine.setAttribute('y1', String(from.y));
+                previewLine.setAttribute('x2', String(to.x));
+                previewLine.setAttribute('y2', String(to.y));
+            }
+
+            function getPointer(event) {
+                const touch = event.touches && event.touches[0];
+
+                return {
+                    x: touch ? touch.clientX : event.clientX,
+                    y: touch ? touch.clientY : event.clientY
+                };
+            }
+
+            function startDrawing(event) {
+                event.preventDefault();
+                clearPattern();
+
+                isDrawing = true;
+                message.textContent = 'Рисуйте ключ';
+                message.classList.remove('error');
+
+                const pointer = getPointer(event);
+                addDot(findTouchedDot(pointer.x, pointer.y));
+                updatePreviewLine(pointer.x, pointer.y);
+            }
+
+            function moveDrawing(event) {
+                if (!isDrawing) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                const pointer = getPointer(event);
+                const dot = findTouchedDot(pointer.x, pointer.y);
+
+                if (dot) {
+                    addDot(dot);
+                }
+
+                updatePreviewLine(pointer.x, pointer.y);
+            }
+
+            function finishDrawing(event) {
+                if (!isDrawing) {
+                    return;
+                }
+
+                event.preventDefault();
+                isDrawing = false;
+
+                if (previewLine) {
+                    previewLine.remove();
+                    previewLine = null;
+                }
+
+                const enteredPattern = selectedDots
+                    .map(dot => dot.dataset.dot)
+                    .join('');
+
+                if (enteredPattern === ACCESS_PATTERN) {
+                    unlockPage();
+                } else {
+                    resetWithError();
+                }
+            }
+
+            window.addEventListener('resize', placeDots);
+
+            area.addEventListener('mousedown', startDrawing);
+            area.addEventListener('mousemove', moveDrawing);
+            window.addEventListener('mouseup', finishDrawing);
+
+            area.addEventListener('touchstart', startDrawing, { passive: false });
+            area.addEventListener('touchmove', moveDrawing, { passive: false });
+            area.addEventListener('touchend', finishDrawing, { passive: false });
+            area.addEventListener('touchcancel', finishDrawing, { passive: false });
+
+            placeDots();
+        })();
+    </script>
+
+
+    <script>
+        (function () {
             const langRu = document.getElementById('langRu');
             const langKz = document.getElementById('langKz');
             const mainTitle = document.getElementById('mainTitle');
@@ -684,62 +975,70 @@
             const footerText = document.getElementById('footerText');
             const cards = document.querySelectorAll('.card');
 
-            const titles = {
+            const texts = {
                 ru: {
-                    main: 'С Днём <span class="accent">шахтёра!</span>',
-                    sub: 'Профессии подземного горного производства',
-                    footer: 'С уважением к каждому, кто выбрал подземный труд'
+                    main: 'С Днём <span class="accent">металлурга</span>',
+                    sub: 'профессии, которые плавят будущее',
+                    footer: 'С уважением к каждому, кто создаёт металл',
+                    link: 'Перейти к форме'
                 },
                 kz: {
                     main: 'Кенші <span class="accent">күнімен!</span>',
                     sub: 'Жерасты тау-кен өндірісінің мамандықтары',
-                    footer: 'Жерасты еңбегін таңдаған әрбір маманға құрметпен'
+                    footer: 'Жерасты еңбегін таңдаған әрбір маманға құрметпен',
+                    link: 'Формаға өту'
                 }
             };
+
+            function decorateTitle(card, title) {
+                const id = card.dataset.id;
+
+                if (id === '1' && title.includes('Алтын')) {
+                    return 'Дробильщик <span class="highlight">Алтын</span>';
+                }
+
+                if (id === '5' || id === '6') {
+                    return title
+                        .replace('золотосодержащих руд', '<span class="highlight">золотосодержащих руд</span>')
+                        .replace('(сорбция золото)', '<br><span class="soft">(сорбция золото)</span>')
+                        .replace('(десорбция)', '<br><span class="soft">(десорбция)</span>');
+                }
+
+                if (id === '11-2') {
+                    return 'Плавильщик <span class="badge-practice">ПРАКТИКА</span>';
+                }
+
+                return title;
+            }
 
             function setLang(lang) {
                 langRu.classList.toggle('active', lang === 'ru');
                 langKz.classList.toggle('active', lang === 'kz');
 
-                mainTitle.innerHTML = titles[lang].main;
-                subTitle.textContent = titles[lang].sub;
-                footerText.textContent = titles[lang].footer;
+                mainTitle.innerHTML = texts[lang].main;
+                subTitle.textContent = texts[lang].sub;
+                footerText.textContent = texts[lang].footer;
 
                 cards.forEach(card => {
                     const titleEl = card.querySelector('.card-title');
                     const linkEl = card.querySelector('.card-link');
                     const linkTextEl = card.querySelector('.link-text');
 
-                    if (titleEl) {
-                        const title = titleEl.getAttribute(`data-title-${lang}`);
-                        if (title) titleEl.textContent = title;
-                    }
+                    const title = titleEl.getAttribute(`data-title-${lang}`);
+                    const href = linkEl.getAttribute(`data-href-${lang}`);
 
-                    if (linkEl) {
-                        const href = linkEl.getAttribute(`data-href-${lang}`);
-                        if (href) linkEl.setAttribute('href', href);
-                    }
-
-                    if (linkTextEl) {
-                        const linkText = linkTextEl.getAttribute(`data-link-${lang}`);
-                        if (linkText) linkTextEl.textContent = linkText;
-                    }
+                    if (title) titleEl.innerHTML = decorateTitle(card, title);
+                    if (href) linkEl.setAttribute('href', href);
+                    if (linkTextEl) linkTextEl.textContent = texts[lang].link;
                 });
 
-                document.documentElement.lang = lang === 'kz' ? 'kk' : 'ru';
+                localStorage.setItem('altynLang', lang);
             }
 
-            langRu.addEventListener('click', event => {
-                event.preventDefault();
-                setLang('ru');
-            });
+            langRu.addEventListener('click', () => setLang('ru'));
+            langKz.addEventListener('click', () => setLang('kz'));
 
-            langKz.addEventListener('click', event => {
-                event.preventDefault();
-                setLang('kz');
-            });
-
-            setLang('kz');
+            setLang(localStorage.getItem('altynLang') || 'kz');
         })();
     </script>
 </body>
